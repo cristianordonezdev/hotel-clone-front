@@ -1,0 +1,427 @@
+1.-PRIMERO EN UNA CARPETA QUE VA A SER DEL BACKEND SE INICIALIZA 
+
+npm init :) se crea el archivo json 
+
+2.- SE INSTALAN LAS DEPENDENCIAS
+
+npm install express --save  INSTALA EXPRESS//MODULO PARA TRABAHAR CON LOS PROTOCOLOS HTTP, UN SISTEMA DE RUTAS, SERIE DE MIDDLEWARES, ETC
+npm install body-parser --save PARA GUARDAR JSON
+npm install connect-multiparty --save (EN CASO SI NECESITAN GUARDAR IMAGENES EN LA BASE DE DATOS)
+npm install mongoose --save PARA GUARDAR JSON FUNDAMENTAL PARA CONECTARSE CON NODE JS
+npm install nodemon --save-dev  PARA QUE ME ACTUALICE Y NO TENGA QUE RECARGAR LOSA CAMBIOS
+
+npm, install --save JQuery PARA INSTALAR JQUERY
+
+3.-SE CREA "index.js"
+4.-EN MI JSON EN LA PARTE DE SCRIPTS ESCRIBI: "start" : "nodemon index.js"
+
+5. Crear un "app.js" donde se hara la configuración del servidor
+
+CODE:
+
+
+//====================================================================//
+//           CONFIGURACION DE EXPRESS PARA CREAR UN SERVIDOR          //
+//====================================================================//
+
+var express = require('express'); //CARGO EL MODULO DE EXPRESS
+var bodyParser = require('body-parser'); //CARGO EL MODULO DE BODY PARSER
+
+var app = express();
+
+//===================ARCHIVO DE RUTAS==============================
+
+var projectRoutes = require('./routes/project'); //CARGA EL ARCHIVO DONDE SE ENCUENTRAN MIS RUTAS
+
+//====================MIDDLEWARES========================
+
+app.use(bodyParser.urlencoded({extended:false})) //CONVIERTE LO QUE LLEGUE POR POST CONVERTIRLO A UN OBJETO JSON
+app.use(bodyParser.json()); //CUALQUIER PETICION LO CONVIERTE A JSON
+
+//===================CORSS==============================
+
+// CONFIGURAR CABECERAS Y CORSS === CUANDO HACEPMOS PETICIONES AJAX CON JQUERY O ANGULAR A UN BACKEND O UNA API REST 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+});
+
+
+//===================RUTAS==============================
+
+// app.get('/hola',(req,res) =>{       //CREANDO UNA NUEVA RUTA... /hola, es una nueva pagina
+//     res.status(200 ).send(          //SE PONE EL 200 PARA DECIR QUE ES UNA PETICION CORRECTA 
+//         '<h1>HOLA MUNDO</h1>'
+//     );
+// });
+// app.post('/msj',(req,res) =>{      
+//     console.log(req.body.nombre); //ESTE VALOR SE LO ENVIE A TRAVES DEL POSTMAN... HICE UNA PETICION POR POST AGREGRE VALORES EN EL BODY DE POSTMA Y AQUI OBTUVE ESE VALOR
+//     res.status(200 ).send(          
+//         {messaje:"este es un mensaje cualquiera"}
+//     );
+// });
+
+app.use('/',projectRoutes);
+//app.use('/api',projectRoutes);  SE PUEDE UTILIZAR ESTA, SE LE PUEDE PONER LA RUTA QUE TU QUIERAS POR EJEMPLO /API
+
+//===================EXPORTACION==============================
+
+module.exports = app;
+
+
+
+
+
+
+
+
+6.- SE CREA UNA CARPETA models CON UN ARCHIVO model.js DONDE VENDRA EL MODELO, O LO QUE SE VA A QUERER GUARDAR DEL USUARIO ETC
+
+    ejemplo:
+
+//====================================================================//
+//                      CREACION DE UN MODELO                         //
+//====================================================================//
+
+var mongoose = require('mongoose') //CARGAR EL MODELO MONGOSE
+var Schema = mongoose.Schema;    //ESQUEMA DE MODELO
+
+var ProjectSchema = Schema( { //OBJETOS MOLDE EL QUE SE UTILIZARA PARA CREAR NUEVOS DOCUMENTOS
+        name:String,
+        description : String,
+        category : String,
+        year : Number,
+        langs : String,
+        image : String
+});
+
+module.exports = mongoose.model('Project',ProjectSchema); //EXPORTACION 
+
+
+
+
+7. SE CREA UNA CARPETA controllers CON UN ARCHIVO controlles.js DONDE IRAN TODOS LOS CONTROLADORES Y 
+LA LOGICA DE NODE JS
+
+'use strict'
+
+//====================================================================//
+//           CONTROLADORES Y RUTAS EN NODE                            //
+//====================================================================//
+
+var Project = require('../models/project');
+var fs = require('fs');     //MODULO PARA QUE PUEDA ELIMINAR ARCHIVOS, SE OCUPARA EN uploadImage
+var path = require('path'); //MODULO QUE UTILIZARE EN MI GETIMAGE
+
+const { exists } = require('../models/project');
+
+var controller = { //PUEDO EXPORTAR UN OBJJETO JSON CON MIS RUTAS
+
+    home: function (req, res) {
+        return res.status(200).send(          //SE PONE EL 200 PARA DECIR QUE ES UNA PETICION CORRECTA 
+            '<h1>HOLA MUNDO</h1>'
+        );
+    },
+    test: function (req, res) {
+        return res.status(200).send(          //SE PONE EL 200 PARA DECIR QUE ES UNA PETICION CORRECTA 
+            { messaje: 'este es un mensaje cualquiera' }
+        );
+    },
+
+    saveProjet: function (req, res) {
+        var project = new Project();
+
+        var params = req.body; //PARA OBTENER MIS DATOS DEL POSTMAN
+
+        //ASIGNACION A MI MODEL PROJECTS DIRECTAMENTE DESDE EL POSTMAN
+        project.name = params.name;
+        project.description = params.description;
+        project.category = params.category;
+        project.year = params.year;
+        project.langs = params.langs;
+        project.image = null;
+
+        //METODO PARA GUARDAR A LA BASE DE DATOS MI NUEVO DOCUMENTO
+        project.save((err, projectStored) => {
+            if (err) return res.status(500).send({ messaje: 'Error al guardar' }); //POSIBLES ERRORES A PASAR
+            if (!projectStored) return res.status(404).send({ messaje: 'No se ha podido guardar el proyeto' }); //POSIBLES ERRORES A PASAR
+
+            return res.status(200).send({ project: projectStored });      //SI NINGUNO DE LOS ERRORES DE ARRIBA PASA, PUES GUARDAMELO EN MI BASE DE DATOS
+        });
+
+        // return res.status(200).send({
+        //     project : project,
+        //     messaje : "sabeproject esta funcionando"
+        // });
+    },
+
+    //METODO PARA OBTENER MI DOCUMENTO DE LAS BASE DE DATOS
+
+    getProject: function (req, res) {
+        var projectId = req.params.id; //Obtendra mi valor de la url
+
+        if (projectId == null) return res.status(500).send({ messaje: 'LA URL ESTA VACIA' })
+
+        Project.findById(projectId, (err, project) => {
+            if (err) return res.status(500).send({ messaje: 'error al devolver los datos' }); //EN CASO DE QUE EXISTA ALGUNOS ERRORES
+            if (!project) return res.status(404).send({ messaje: 'el proyecto no existe' });
+
+            return res.status(200).send({ project });
+        });
+    },
+
+
+    //      METODO PARA OBETENER MI COLECCION DE OBJETOS QUE TENGO EN MI BASE DE DATOS 
+
+    getProjects: function (req, res) {
+
+        Project.find({}).exec((err, projects) => {  //FUNCION PARA OBTENER TODOS
+            if (err) return res.status(500).send({ messaje: 'Error al devolver la coleccion de datos' });
+            if (!projects) return res.status(404).send({ messaje: 'No existen datos que mostrar' });
+
+            return res.status(200).send({ projects });
+        });
+    },
+
+    //      METODO PARA ACTUALIZAR MIS DATOS 
+
+    updateProject: function (req, res) {
+        var projectId = req.params.id; //RECOJE EL ID DE LA URL
+        var newParams = req.body;   //RECOJE LOS DATOS DEL POSTMAN
+
+        Project.findByIdAndUpdate(projectId, newParams, { new: true }, (err, projectUpdated) => { //ENCUENTRA MI DOCUMENTO A TRAVES DE ID Y ME LO ACTUALIZA
+            if (err) return res.status(500).send({ messaje: 'Algun error ha ocurrido' });
+            if (!projectUpdated) return res.status(404).send({ messaje: 'No existe ese campo' });
+
+            return res.status(200).send({ projectUpdated });
+        });
+
+    },
+
+    //      METODO PARA ELIMINAR PROYECTOS 
+
+    deleteProject: function (req, res) {
+        var projectId = req.params.id;   //OBTENEMOS NUESTRO ID
+
+        Project.findByIdAndRemove(projectId, (err, project) => {
+            if (err) return res.status(500).send({ messaje: 'Algun error ha ocurrido' });
+            if (!project) return res.status(404).send({mensaje:'No existe ese projecto'});
+
+            return res.status(200).send({project});
+        });
+
+    },
+
+    //      METODO PARA SUBIR LA IMAGEN A MI BACKEND
+
+    uploadImage: function(req,res){
+        var projectId = req.params.id;
+        var FileName = 'Imagen no subida...';
+        
+        if(req.files){  //req.files SE REFIERE A LA IMAGEN, EL ARCHIVO SUBIDO
+            var filePath = req.files.image.path; //obtengo mi ruta
+            var cut = filePath.split('\\'); //la corto para solo almacenar la ruta
+            var path = cut[1];  //la obtengo
+            var cut_two = path.split('.');
+            var ext = cut_two[1];
+
+            if(ext == 'jpg' || ext == 'png' || ext == 'jpeg' || ext =='gif'){
+                Project.findByIdAndUpdate (projectId , {image : path}, {new :true} , (err,projectUpdated)=>{
+                    if (err) return res.status(500).send({ messaje: 'Algun error ha ocurrido' });
+                    if (!projectUpdated) return res.status(404).send({ messaje: 'No existe ese campo' });
+                    return res.status(200).send({projectUpdated , extencion: ext });
+                });
+            }else{
+                fs.unlink(filePath,(err)=>{
+                    return res.status(404).send({messaje: 'Extención no valida'});
+
+                });
+            }
+
+          
+
+            
+        }else{
+            return res.status(200).send({messaje:FileName});
+        }
+
+    },
+
+    //      METODO PARA QUE ME DEVUELVA UNA IMAGEN DE MI BACKEND
+
+    getImgae: function(req,res){
+        var file = req.params.image;
+        var path_file = './uploads/'+file;
+
+        fs.exists(path_file, (exists)=>{
+            if(exists){
+                return res.sendFile(path.resolve(path_file));
+            }else{
+                return res.status(200).send({
+                    messaje:"No existe la imagen..."
+                });          
+
+            }
+        });
+    }
+}
+
+module.exports = controller;
+
+
+
+
+
+8.- SE CREA UNA CARPETA routes CON UN ARCHIVO routes.js DONDE SE APLICARA LA CONFIGURACION DE LAS RUTAS
+
+'use strict'
+
+//====================================================================//
+//           CONFIGURACION DE MIS RUTAS EN BACKEND                    //
+//====================================================================//
+
+var express = require('express');   //CARGO EL MODULO DE EXPRESS
+var ProjectController = require('../controllers/project');  //CARGO EL MODULO DE CONTROLLERS QUE ESTA EN ESA CARPETA
+
+var router = express.Router(); //CARGARLO
+var multiparty = require('connect-multiparty'); //MODULO PARA QUE SE PUEDAN CARGAR ARCHIVOS COMO IMAGENES
+var middlewareMulti = multiparty({ uploadDir: './uploads' }); // LUGAR DONDE SE VAN A ALMACENAR ESOS ARCHIVOS QUE SE VANA SUBIR
+
+router.get('/home', ProjectController.home); //ACCEDO A LA VISTA QUE HE CREADO EN MI CONTROLLERS DE HOME Y LE ASIGNO LA RUTA
+router.post('/test', ProjectController.test);
+router.post('/save-project', ProjectController.saveProjet);
+router.get('/project/:id?', ProjectController.getProject);  //:ID PARA OBTENER MIS VALORES QUE SE LE PASEN POR LA URL
+//router.get('/project/:id', ProjectController.getProject); PUEDE FUNCIIONAR ESTA LINEA, SOLO QUE LA DE ARRIBA LE PONEMOS UN ? PARA DECIRLE QUE ES OPCINAL PONER LA URL
+router.get('/projects', ProjectController.getProjects);
+router.put('/update/:id', ProjectController.updateProject);
+router.delete('/delete/:id', ProjectController.deleteProject);
+router.post('/upload-image/:id', middlewareMulti, ProjectController.uploadImage); //METODO PARA SUBIR UNA IMAGEN
+router.get('/get-image/:image',ProjectController.getImgae);
+module.exports = router;
+
+9.- EN MI INDEX.JS SE HACE LA CONEXION A LA BASE DE DATOS
+
+'use strict'
+//===========CODIGO PARA CONECTARSE CON LA BASE DE DATOS=======================
+
+
+var mongoose = require('mongoose');  //CARGA EL MODULO
+var app = require('./app'); //IMPORTACION DE MI CONFIGURACION PARA CREAR EL SERVIDOR
+var port = 3700; //PUERTO PARA EL SERVIDOR
+
+mongoose.Promise= global.Promise;
+mongoose.connect('mongodb://localhost:27017/portafolio') //DIRECCION 
+        .then(()=>{
+            
+            console.log('Conexión a la base de datos establecida')  //MENSAJE DE EXITO
+            
+            app.listen(port,()=> console.log('Servidor funcionando en la URL localhost:3700')); //LEVANTAR EL SERVICIO
+        
+        })
+        .catch(err => console.log(err)); //MENSAJE SI ES QUE EXISTE UN ERROR
+
+//PARA INICIAR LA CONEXION A LA BASE DE DATOS SE TIENE QUE IR A LA CARPETA DEL PROYECTO EN LA CONSOLA Y EJECUTAR EL 'npm start'
+
+//========================================================================//
+
+
+
+
+10.- EN MI APP SE AGREGAN EN MIS ARCHIVOS DE RUTAS Y EN LAS RUTAS LAS NUEVAS RUTAS QUE SE AGREGARON
+
+ARCHIVO DE RUTAS:
+var projectRoutes = require('./routes/project'); //CARGA EL ARCHIVO DONDE SE ENCUENTRAN MIS RUTAS
+
+
+RUTAS:
+app.use('/',projectRoutes);
+
+11.- COMPROBAR SI EN MI NAVEGADOR EN MI localhost/home APARECE MI HOLA MUNDO, SI HAY UN ERROR, FIJARSE SI LOS PUNTOS ESTAN BIEN O ALGO MAL ESCRITO
+
+
+12.- A PARTIR DE AQUI SE MODIFICA EN CONTROLLERS LO QUE SE DESEA CREAR EN EL BACKEND
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+A PARTIR DE AQUI SE EMPIEZA A HACER LA CONEXION ENTRE EL BACKEND Y EL FRONTEND ... A TRAVES DEL FORMULARIO.
+
+
+1.- EN LA CARPETA DEL PROYECTO, EN LA CARPETA APP, CREAREMOS EL MODELO DE LO QUE QUEREMOS GUARDAR, CARPETA modelo DENTO UN ARCHIVO ts QUE SERA MI MODELO 
+
+    EJEMPLO:
+
+export class Project {
+    constructor(
+        public _id:string,
+        public name: string,
+        public description:string,
+        public year : number,
+        public langs : string, 
+        public image : string,
+        public category : string
+    ){}
+}
+
+
+2.- AHORA CREAMOS LA CARPETA services DONDE ESTARAN MIS SERVICIOS QUEHARA EL USUARIO archivo ts
+
+    EJEMPLO:
+
+import { Injectable } from '@angular/core'
+import { HttpClient, HttpHeaders } from '@angular/common/http' //PARA HACER PETICIONES AJAX
+import { Observable } from 'rxjs/Observable'; //npm install --save rxjs-compat INSTALAR SI ES QUE SALE ERROR
+import { Project } from '../Models/proyect'
+import { global } from './global'
+
+@Injectable()
+export class ProjectService {
+    public url: string
+
+    constructor(
+        private _http: HttpClient
+    ) {
+        this.url = global.url;
+    }
+
+    testService() {
+        return 'Toy calando perfectamente el servicio de angular ya activo';
+    }
+
+}
+
+3.-EN MI ARCHIVO TS DE MI VISTA AGREGAREMOS UN NUEVO OBJETO DE NUESTRO USUARIO Y APARTE SE IMPORTARA EL SERVICIO QUE ACABO DE CREAR
+EN EL PASO ANTERIOR Y EL MODELO 
+
+import { UserService} from '../../services/userService';
+import { Model} from '../../models/model';
+
+
+@Component({
+
+  providers :[UserService]
+})
+
+export class ContactoComponent implements OnInit {
+  constructor(private wowService : NgwWowService,
+              private _userService : UserService
+        ) { 
+          this.user = new Model("","","","","");
+  }
+
+
+
+4.-NO OLVIDES IMPORTAR EN app.module MI NUEVA IMPORTACION 
+
+import {HttpClientModule} from '@angular/common/http' //PARA QUE PUEDA UTILIZAR MIS PETICIONES AJAX
+
+    HttpClientModule,
+
+5.-

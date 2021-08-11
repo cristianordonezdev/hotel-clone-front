@@ -1,0 +1,114 @@
+.parallax{
+    background-image: url(../../../assets/images/Contacto/SliderFotos_Villas.jpg);
+    background-size: 2200px;
+    height: 475px;
+}
+
+.mineContainerContact{
+    width: 70%;
+    margin: 0 auto;
+}
+
+p{
+    color: rgb(161, 159, 159);
+    text-align: justify;
+}
+hr{
+    border: 1px solid #ccc;
+}
+h1{
+    font-weight: bold;
+}
+
+h2{
+    display: block;
+    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-top: 2px solid #ED1C8F;
+    border-bottom: 2px solid #ED1C8F;
+    text-align: center;
+    margin: 0 auto;
+}
+
+input[type="text"],
+input[type="email"],
+textarea{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ccc;
+    background-color: rgba(204, 204, 204, 0.479);
+    color: #444;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus{
+    border:1px solid #ED1C8F;
+}
+
+label{
+    margin-bottom: -10px    ;
+}
+
+input[type="submit"]{
+    padding: 15px;
+    color: white;
+    background-color: #ED1C8F;
+    border: none;
+    font-size: bold;
+    outline: none;
+}
+
+input[type="submit"]:hover{
+    background-color: #d3197f;
+  
+}
+
+input[type="email"]{
+    display: flex;
+}
+
+.correo{    
+    font-size: 20px;
+    float: right;
+    position: relative;
+    right: 20px;
+    top: 37px;
+    
+}
+
+.error_validate{
+    color: red;
+    font-size: 15px;
+    position: relative;
+    bottom: 20px;
+}
+
+
+.alert{
+    background-color: #d3197f73 !important;
+    color: white !important;
+    display: none;
+    text-align: center;
+}
+
+.alert span{
+    color: white;
+}
+
+input[disabled]{
+    background-color: #ccc;
+    color: rgb(170, 167, 167);
+    cursor: not-allowed;
+}
+
+input[disabled]:hover{
+    background-color: #ccc;
+    color: rgb(170, 167, 167);
+  
+}

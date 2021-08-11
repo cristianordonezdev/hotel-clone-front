@@ -1,0 +1,62 @@
+<header>
+
+  <nav id="menu" >
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+
+    <div id="logo">
+      <a [routerLink]='["/"]'> <img src="../assets/images/logo_abcentral_home2.png" alt=""></a>
+    </div>
+
+    <ul>
+      <li><a [routerLink]='["/habitaciones"]' [routerLinkActive]="['actived']">HABITACIONES</a></li>
+      <li><a [routerLink]='["/galeria"]' [routerLinkActive]="['actived']">GALERIA</a></li>
+      <li>
+        
+        <a [routerLinkActive]="['actived']" class="sub">SERVICIOS</a>
+      
+        <ul class="submenu">
+          <li> <a [routerLink]='["servicios/alimentos-y-bebidas"]' [routerLinkActive]="['actived']" class="subItem">ALIMENTOS Y BEBIDAS</a></li>
+          <li> <a [routerLink]='["servicios/menu-sex"]' [routerLinkActive]="['actived']" class="subItem">MENU SEX</a></li>
+        </ul>
+      </li>
+      <li><a [routerLink]='["/promociones"]' [routerLinkActive]="['actived']">PROMOCIONES</a></li>
+
+      <li><a [routerLink]='["/contacto"]' [routerLinkActive]="['actived']">CONTACTO</a></li>
+      <li><a [routerLink]='["/programa-de-lealtad"]' [routerLinkActive]="['actived']">PROGRAMA DE LEALTAD</a></li>
+      <li><a class="socialNetworks"><i class="fab fa-facebook-f"> </i></a></li>
+      <li><a class="socialNetworks"><i class="fab fa-twitter"></i></a></li>
+
+    </ul>
+  </nav>
+</header>
+
+<section id="content">
+  <router-outlet></router-outlet>
+</section>
+
+<footer>
+  <div class="footerContent">
+    <div class="row">
+      <div class="col mt-5 mb-5">
+        <img src="../assets/images/logo_abcentral_home2.png" class="mb-3">
+        <p>Luis Echeverría Álvarez #34, Col. Melchor Muzquiz. </p>
+        <p>Ecatepec de Morelos, Edo. De Méxic.</p>
+        <p>Email: contacto@hotelabcentral.com</p>
+        <p>Tels: 5545964035 / 5557964037 / 5527748811</p>
+        <a class="socialNetworksInicio"><i class="fab fa-facebook-f"></i> </a>
+        <a class="socialNetworksInicio"><i class="fab fa-twitter"></i></a>
+        <a class="socialNetworksInicio"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+ <a class="goingUp" href="#"><i class="fas fa-arrow-circle-up"></i></a>
+ <a class="messenger" href="#"><i class="fab fa-facebook-messenger"></i></a>
+
+  <div class="copy">
+    &copy; Todos los derechos reservados para Hotel ABCentral, página replicada por Cristian Hernández
+  </div>
+
+</footer>

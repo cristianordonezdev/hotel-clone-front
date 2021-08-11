@@ -1,0 +1,34 @@
+.parallax{
+    background-image: url(../../../assets/images/menu-sex/SliderFotos_restaurante.jpg);
+    background-size: 2200px;
+    height: 475px;
+}
+
+h2{
+    font-size: 35px;
+    border-top: 2px solid #ED1C8F;
+    border-bottom: 2px solid #ED1C8F;
+}
+
+h2{
+    text-align: center;
+    width: 70%;
+    margin: 0px auto;
+}
+
+
+img{
+    display: block;
+    margin: 0px auto;
+    width: 40%;
+}
+
+.mineContainerMenuSex{
+    width: 70%;
+    margin: 0px auto;
+}
+
+.mineContainerMenuSex img{
+    width: 75%;
+}
+

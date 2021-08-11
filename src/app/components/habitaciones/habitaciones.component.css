@@ -1,0 +1,29 @@
+
+.parallax{
+    background-image: url(../../../assets/images/parallax-habitacion.jpg);
+    background-size: 2200px;
+    height: 475px;
+}
+
+
+.two{
+    background-color: #F6F6F6;
+}
+
+.a h1{
+    font-size: 60px;
+    margin-bottom: -15px;
+}
+
+.a p{
+    padding-bottom:10px;
+    border-bottom: 1px solid #ccc;
+    font-size: 21px;
+}
+
+.a ul{
+    margin-left: 20px;
+    font-style: italic;
+    font-size: 20px;
+    color:rgb(141, 140, 140);
+}

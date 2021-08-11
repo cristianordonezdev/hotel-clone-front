@@ -1,0 +1,39 @@
+.parallax{
+    background-image: url(../../../assets/images/promociones/SliderFotos_PaqueteAmor.jpg);
+    background-size: 2200px;
+    height: 475px;
+}
+
+.mineContainerPromociones{
+    width: 70%;
+    margin: 0 auto;
+    
+}
+
+h2{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.fp{
+    display: block;
+    border-top: 1px solid gray;
+    color: gray;
+    border-bottom: 1px solid gray;
+    font-size: 20px;
+}
+
+.sp{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.row{
+    border-bottom: 2px solid #ED1C8F;
+    padding: 0px;
+    margin: 0px;
+}
+
+.st{
+    color: #ED1C8F;
+}

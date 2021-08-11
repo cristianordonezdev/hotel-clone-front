@@ -1,0 +1,65 @@
+<div class="parallax"></div>
+
+<div class="mineContainerContact">
+    <div class="row">
+        <div class="col-lg-3 col-sm-12 mt-5">
+            <h1 class="mb-4">CONTACTO</h1>
+            <h3>Dirección:</h3>
+            <p>Luis Echeverria Alvarez #34. Col</p>
+            <p>Melchor Muzquiz Ecatepec de</p>
+            <p>Morelos, Edo. De México</p>
+            <hr>
+            <h3>TELEFONOS:</h3>
+            <p>5527748811 / 888444541</p>
+            <p>112233445566</p>
+            <hr>
+            <h3>CÓMO LLEGAR:</h3>
+            <p>Noes encotramos en una calle paralela a la Av. Central, justo entre las calles estaciones de metro
+                Muzquiz y el metro Ecatepec</p>
+        </div>
+        <div class="col-lg-9 col-sm-12 mt-5 mb-5">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15043.427772010935!2d-99.0356807123427!3d19.50478965399769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fa94d44b21df%3A0xd208ee1d63bf4f2f!2sHotel%20ABCentral!5e0!3m2!1ses-419!2smx!4v1617733066643!5m2!1ses-419!2smx"
+                width="" height="600" style="border:0;" allowfullscreen="" loading="lazy" class="w-100"></iframe>
+        </div>
+
+    </div>
+    <h2>Si tienes duda o comentario por favor llena el siguiente formulario.</h2>
+    <form #formUser="ngForm" (ngSubmit)="onSubmit(formUser)" class="mt-4 mb-5">
+
+        <div class="alert" role="alert">
+            <strong>El formulario fue enviado con éxito</strong> 
+            <button type="button" class="close" data-dismiss="alert" ><span>&times;</span></button>
+        </div>
+
+        <div>
+            <label for="nombre">Su nombre</label>
+            <input type="text" name="name" #name="ngModel" required [(ngModel)]="user.name">
+            <span class='error_validate' *ngIf="!name.valid && name.touched">Requerido</span>
+
+        </div>
+        <div class="miEmail"> <label for="email">Email</label>
+            <i class="fas fa-envelope correo"></i>
+            <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" required>
+            <span class='error_validate' *ngIf="!email.valid && email.touched">Requerido</span>
+
+        </div>
+        <div>
+            <label for="asunto">Asunto</label>
+            <input type="text" name="subject" #subject="ngModel" [(ngModel)]="user.subject" required>
+            <span class='error_validate' *ngIf="!subject.valid && subject.touched">Requerido</span>
+
+        </div>
+
+        <div>
+            <label for="mensaje">Su mensaje</label>
+            <textarea name="message" #message="ngModel" [(ngModel)]="user.message" required cols="30"
+                rows="10"></textarea>
+            <span class='error_validate' *ngIf="!message.valid && message.touched">Requerido</span>
+
+        </div>
+        <input type="submit" [disabled]='!formUser.form.valid'>
+
+    </form>
+
+</div>
