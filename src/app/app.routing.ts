@@ -15,6 +15,9 @@ import { ProgramaLealtadComponent } from './components/programa-lealtad/programa
 import { AvisoDePrivacidadComponent } from './components/aviso-de-privacidad/aviso-de-privacidad.component';
 import { AlimentosYBebidasComponent } from './components/alimentos-y-bebidas/alimentos-y-bebidas.component';
 import { MenuSexComponent } from './components/menu-sex/menu-sex.component';
+import { LoginComponent } from './components/login/login.component';
+import { AdminViewComponent } from './components/admin-view/admin-view.component';
+import { ImagesAdminComponent } from './components/admin-view/images-admin/images-admin.component';
 
 
 //DEFINICION DE RUTAS
@@ -29,8 +32,10 @@ const appRoutes: Routes = [
     { path: 'programa-de-lealtad', component: ProgramaLealtadComponent },
     { path: 'aviso-de-privacidad', component: AvisoDePrivacidadComponent },
     { path: 'servicios/alimentos-y-bebidas', component: AlimentosYBebidasComponent },
-    { path: 'servicios/menu-sex', component: MenuSexComponent }
-
+    { path: 'servicios/menu-sex', component: MenuSexComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'admin-view-edit', component: AdminViewComponent },
+    { path: 'admin-view-edit/images/:type', component: ImagesAdminComponent }
 ];
 
 //EXPORTACION DE MI APP.MODULE

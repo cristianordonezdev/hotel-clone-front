@@ -16,7 +16,13 @@ import { AvisoDePrivacidadComponent } from './components/aviso-de-privacidad/avi
 import { AlimentosYBebidasComponent } from './components/alimentos-y-bebidas/alimentos-y-bebidas.component';
 import { MenuSexComponent } from './components/menu-sex/menu-sex.component';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';//PARA APLICAR MIS FORMULARIOS TWO DATA BINDING 
-import {HttpClientModule} from '@angular/common/http' //PARA QUE PUEDA UTILIZAR MIS PETICIONES AJAX
+import {HttpClientModule} from '@angular/common/http';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { AdminViewComponent } from './components/admin-view/admin-view.component';
+import { ImagesAdminComponent } from './components/admin-view/images-admin/images-admin.component';
+import { LoadingIconOverlayComponent } from './components/mini-components/loading-icon-overlay/loading-icon-overlay.component' //PARA QUE PUEDA UTILIZAR MIS PETICIONES AJAX
 
 
 @NgModule({
@@ -32,7 +38,12 @@ import {HttpClientModule} from '@angular/common/http' //PARA QUE PUEDA UTILIZAR 
     AvisoDePrivacidadComponent,
     AlimentosYBebidasComponent,
     MenuSexComponent,
-
+    NavbarComponent,
+    FooterComponent,
+    LoginComponent,
+    AdminViewComponent,
+    ImagesAdminComponent,
+    LoadingIconOverlayComponent,
   ],
   imports: [
     BrowserModule,

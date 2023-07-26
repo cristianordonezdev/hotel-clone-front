@@ -1,0 +1,31 @@
+<section class="main-container-admin-view pt-10">
+  <div class="w-100 d-flex justify-content-center">
+    <button class="p-2 rounded-lg mb-4" (click)="openFile()">Agregar nuevas imagenes</button>
+    <input type="file" class="d-none" id="fileManager" multiple [(ngModel)]="files_upload" (change)="onFilesSelected($event.target)">
+  </div>s
+  <div class="row max-width-1400">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-0 mb-4 position-relative" *ngFor="let item of images">
+      <div class="m-1 position-relative image-admin-container">
+        <img src="{{item.filePath}}" alt="" class="w-100 image-admin">
+        <div class="background-image-admin">
+          <button class="p-1 rounded" (click)="confirmToDelete(item.id)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          ¿Estás seguro de querer eliminar esta imagen?
+        </div>
+        <div class="modal-footer">
+          <button data-dismiss="modal" class="p-1">Cancelar</button>
+          <button class="p-1 bg-danger" (click)="deleteImage()">Si, quiero eliminar esta imagen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-loading-icon-overlay *ngIf="loading"></app-loading-icon-overlay>

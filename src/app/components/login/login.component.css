@@ -1,0 +1,46 @@
+.main-container-login {
+    background-color: #282828;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 14em;
+}
+.main-container-login label {
+    color: white;
+    display: block
+}
+.main-container-login form {
+    width: 300px;
+}
+.password-container, .user-container {
+    margin-bottom: 1em;
+}
+.main-container-login input[type="text"], input[type="password"] {
+    padding: 0.5em;
+    width: 100%;
+    border-radius: 0.4em;
+    outline: none;
+}
+.main-container-login input[type="submit"] {
+    padding: 0.7em;
+    width: 100%;
+    background-color: rgb(216, 4, 39);
+    color: white;
+    border-radius: 1em;
+    border: none;
+    font-weight: bold;
+}
+.main-container-login input[type="submit"]:hover {
+    background-color: rgba(216, 4, 39, 0.8);
+}
+.going-home-button {
+ position: absolute ;
+ left: 1em ;
+ top: 1em;
+}
+.going-home-button > button {
+  padding: 0.5em;
+  background-color: gray;
+  border-radius: 10em;
+  color: whitef;
+}

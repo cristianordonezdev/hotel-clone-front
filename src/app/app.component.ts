@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+
 declare var $:any;
 @Component({
   selector: 'app-root',
@@ -8,12 +10,10 @@ declare var $:any;
 export class AppComponent {
   title = 'HotelABCentral';
 
-  constructor(){
-    
-
+  constructor(private router: Router) {
   }
   ngOnInit(): void {
-
+    console.log(this.router)
     window.addEventListener("scroll",function(){
       let offset=window.pageYOffset;
       var going =$(".goingUp");
@@ -36,5 +36,8 @@ export class AppComponent {
       }, 1000);
       return false;
     });
+  }
+  verifyRoute():boolean {
+    return this.router.url !== '/login';
   }
 }
