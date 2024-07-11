@@ -1,0 +1,31 @@
+<section class="text-white add-images-container">
+  <form action="">
+    <label for="" class="mr-3">Sube archivos: </label>
+    <input 
+      type="file" 
+      name="input-files" 
+      id="fileManager" multiple [(ngModel)]="files_upload" (change)="onFilesSelected($event.target)"
+      accept=".png, .jpg, .jpeg"
+    >
+
+    <span class="x-icon-close" (click)="closeAddImages()">x</span>
+
+    <div class="main-container-images-to-upload mt-3" *ngIf="blob_files.length > 0">
+      <div class="form-group mt-4">
+        <label for="exampleFormControlSelect1" class="text-white">Tipo de imagenes para subir</label>
+        <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="image_type_selected">
+          <option *ngFor="let type of images_types">{{type.type}}</option>
+        </select>
+      </div>
+
+      <div class="p-2 border-bottom w-100 d-flex justify-content-between align-items-center" *ngFor="let item of blob_files">
+        <img [src]="item.url" alt="" class="image-to-upload">
+        <span class="delete-image-icon-to-upload" (click)="deleteImageToUpload(item.id)">x</span>
+      </div>
+      
+      <button class="px-5 py-2 mt-5 text-white bg-success" (click)="uploadImages()">Subir</button>
+    </div>
+
+
+  </form>
+</section>

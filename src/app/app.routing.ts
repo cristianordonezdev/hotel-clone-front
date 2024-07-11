@@ -35,7 +35,7 @@ const appRoutes: Routes = [
     { path: 'servicios/menu-sex', component: MenuSexComponent },
     { path: 'login', component: LoginComponent },
     { path: 'admin-view-edit', component: AdminViewComponent },
-    { path: 'admin-view-edit/images/:type', component: ImagesAdminComponent }
+    { path: 'admin-view-edit/images', component: ImagesAdminComponent },
 ];
 
 //EXPORTACION DE MI APP.MODULE

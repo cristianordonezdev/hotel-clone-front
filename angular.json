@@ -32,7 +32,6 @@
             ],
             "styles": [
               "./src/assets/css/generalStyles.css",
-              "./src/assets/fontawesome/css/all.css",
               "./node_modules/animate.css/animate.min.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/lightbox2/dist/css/lightbox.min.css"
@@ -40,11 +39,9 @@
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
-              "./src/assets/fontawesome/js/all.js",
               "./node_modules/wowjs/dist/wow.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "./node_modules/lightbox2/dist/js/lightbox.js"
-
             ]
           },
           "configurations": {

@@ -1,6 +1,6 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { ImagesService } from 'src/app/services/imagesService';
+
 
 declare var $:any;
 
@@ -13,20 +13,40 @@ declare var $:any;
 export class ImagesAdminComponent implements OnInit {
   images: any[] = [];
   image_selected_id: string = '';
-  open_modal: boolean = false;
   files_upload: any[] = [];
   loading: boolean = false;
+  images_types: any[] = []
+  type: string | undefined;
+  open_add_images: boolean = false;
 
-
-  constructor(private _service: ImagesService, private _route: ActivatedRoute) { }
+  constructor(
+    private _service: ImagesService,
+  ) { }
   
 
   ngOnInit(): void {
+    this.getImagesTypes();
+    this.getImages();
+  }
+  getImagesTypes(): void {
+    this._service.getImagesTypes().subscribe((response) => {
+      this.images_types = response;
+    }, error => {
+      console.log(error)
+    })
+  }
+  filterBy(type: string) {
+    this.type = type;
+    // Crea un nuevo objeto con los mismos valores de params y queryParams del actual
+    // Navega a la misma ruta con los nuevos parámetros
+  
+    // this._route.snapshot.params.type = this.type;
+    // this._router.navigate([], { queryParams: {} });
+    console.log('entre', this.type)
     this.getImages();
   }
   getImages(): void {
-    const type: string = this._route.snapshot.params.type;
-    this._service.getImages(type).subscribe((response) => {
+    this._service.getImages(this.type).subscribe((response) => {
       this.images = response;
     }, error => {
       console.log(error)
@@ -43,28 +63,27 @@ export class ImagesAdminComponent implements OnInit {
   }
   confirmToDelete(id: string): void {
     this.image_selected_id = id;
-    this.open_modal = true;
     $('#modalConfirm').modal('show');
   }
   openFile() {
     $('#fileManager').click();
   }
-  onFilesSelected(event: any) {
-    setTimeout(() => {
-      this.loading = true;
-      const files: File[] = event.files;
-      const data: FormData = new FormData();
-      data.append('imagetypeid', 'e4567686-1b4d-483d-a374-9e99306c8e7b');
-      for (let index = 0; index < files.length; index++) {
-        data.append('file', files[index]);      
-      }
-      this._service.uploadImages(data).subscribe((response) => {
-        this.images = this.images.concat(response);
-        this.loading = false;
-      }, (error) => {
-        console.log(error)
-        this.loading = false;
-      })
-    }, 1000);
-  }
+  // onFilesSelected(event: any) {
+  //   setTimeout(() => {
+  //     this.loading = true;
+  //     const files: File[] = event.files;
+  //     const data: FormData = new FormData();
+  //     data.append('imagetypeid', 'e4567686-1b4d-483d-a374-9e99306c8e7b');
+  //     for (let index = 0; index < files.length; index++) {
+  //       data.append('file', files[index]);      
+  //     }
+  //     this._service.uploadImages(data).subscribe((response) => {
+  //       this.images = this.images.concat(response);
+  //       this.loading = false;
+  //     }, (error) => {
+  //       console.log(error)
+  //       this.loading = false;
+  //     })
+  //   }, 1000);
+  // }
 }

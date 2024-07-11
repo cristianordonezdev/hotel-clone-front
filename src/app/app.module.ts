@@ -22,7 +22,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminViewComponent } from './components/admin-view/admin-view.component';
 import { ImagesAdminComponent } from './components/admin-view/images-admin/images-admin.component';
-import { LoadingIconOverlayComponent } from './components/mini-components/loading-icon-overlay/loading-icon-overlay.component' //PARA QUE PUEDA UTILIZAR MIS PETICIONES AJAX
+import { LoadingIconOverlayComponent } from './components/mini-components/loading-icon-overlay/loading-icon-overlay.component';
+import { AddImagesComponent } from './components/mini-components/add-images/add-images.component' //PARA QUE PUEDA UTILIZAR MIS PETICIONES AJAX
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { LoadingIconOverlayComponent } from './components/mini-components/loadin
     AdminViewComponent,
     ImagesAdminComponent,
     LoadingIconOverlayComponent,
+    AddImagesComponent,
   ],
   imports: [
     BrowserModule,
