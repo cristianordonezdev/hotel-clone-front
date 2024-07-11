@@ -42,66 +42,10 @@
     z-index: 2;
 
 }
-/* MENU */
-#menu{
-    width: 100%;
-    height: 120px;
-    background-color: rgba(0,0,0,0.8);
-    position: fixed;
-    z-index: 2;
-}
-#menu >ul{
-    
-    margin: 0px auto;
-    float: right;
-    margin-right:60px ;
-}
 
-#menu >ul >li{
-    
-    
-    display: inline-block;
-    line-height: 115px;
-}
-
-#menu >ul >li >a{
-    color: white;
-    padding-left:12px ;
-    padding-right: 12px;
-    border-left: 1px solid white ;
-    text-decoration: none;
-    letter-spacing: 2px;
-    font-size: 16px;
-    font-weight: bolder;
-}
-#menu >ul >li >a:hover{
-    color: #ED1C8F;
-    transition: all 700ms;
-    text-shadow: 2px 0px 5px black ;
-    cursor: pointer;
-}
-
-#menu > a:hover,.actived{
-    color: #ED1C8F !important;
-}
-#menu .socialNetworks{
-    border-left: 0px solid white ;
-    font-size: 25px;
-    color: rgb(141, 140, 140);   
-}
-
-#menu .avatar-user {
-    display: flex;
-    border-radius: 100%;
-    background-color: gray;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-.submenu-login {
+/* .submenu-login {
     position: absolute;
     width: 150px;
-    /* height: 200px; */
     right: 0em;
     margin-top: 1em;
     background-color: gray;
@@ -111,10 +55,10 @@
     color: white;
     text-align: center;
     font-weight: bold;
-}
+} */
 .submenu-login > li {
     line-height: normal;
-    padding: 1em;
+    /* padding: 1em; */
     list-style: none;
     overflow: hidden;
 }
@@ -158,21 +102,9 @@
    transition: all 500ms;
 }
 
-#menu ul li:hover ul{
+/* #menu ul li:hover ul{
     display: block;
-}
-
-#logo{
-    width: 350px;
-    float: left;
-    margin-left: 50px;
-    margin-top: 5px;
-}
-
-#logo img{
-    width: 310px;
-}
-
+} */
 
 .checkbtn{
     color:rgb(141, 140, 140);
@@ -201,7 +133,7 @@
 .position-relative {
     position: relative;
 }
-@media(max-width:1355px){
+/* @media(max-width:1355px){
     .checkbtn{
         display: block;
         margin-left:30px ;
@@ -257,58 +189,8 @@
 
 
 }
+ */
 
-
-@media(max-width:1163px){
-    #logo{
-        width: 85%;
-        
-    }
-}
-
-@media(max-width:775px){
-    #logo{
-        width: 75%;
-        
-    }
-}
-
-
-@media(max-width:500px){
-    #logo img{
-        width: 250px;
-        
-    }
-    #logo {
-        width: 60%;
-        margin-top: 15px;
-    }
-
-}
-
-@media(max-width:380px){
-    #logo img{
-        width: 200px;
-        
-    }
-    #logo {
-        width: 50%;
-        margin-top: 20px;
-    }
-
-}
-
-@media(max-width:325px){
-    #logo img{
-        width: 150px;
-        
-    }
-    #logo {
-        width: 45%;
-        margin-top: 30px;
-    }
-
-}
 
 /* CARRUSEL */
 

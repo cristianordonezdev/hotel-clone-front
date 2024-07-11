@@ -1,11 +1,13 @@
 <nav id="menu" >
-    <input type="checkbox" id="check">
+    <!-- <input type="checkbox" id="check">
     <label for="check" class="checkbtn">
       <i class="fas fa-bars"></i>
-    </label>
+    </label> -->
 
     <div id="logo">
-      <a [routerLink]='["/"]'> <img src="../assets/images/logo_abcentral_home2.png" alt=""></a>
+      <h1>
+        <a [routerLink]='["/"]'><span class="h-letter">H</span>otel <span class="clone-text">clone</span></a>
+      </h1>
     </div>
 
     <ul>
@@ -15,10 +17,10 @@
         
         <a [routerLinkActive]="['actived']" class="sub">SERVICIOS</a>
       
-        <ul class="submenu">
+        <!-- <ul class="submenu">
           <li> <a [routerLink]='["servicios/alimentos-y-bebidas"]' [routerLinkActive]="['actived']" class="subItem">ALIMENTOS Y BEBIDAS</a></li>
           <li> <a [routerLink]='["servicios/menu-sex"]' [routerLinkActive]="['actived']" class="subItem">MENU SEX</a></li>
-        </ul>
+        </ul> -->
       </li>
       <li><a [routerLink]='["/promociones"]' [routerLinkActive]="['actived']">PROMOCIONES</a></li>
 
@@ -26,15 +28,15 @@
       
       <li><a [routerLink]='["/programa-de-lealtad"]' [routerLinkActive]="['actived']">PROGRAMA DE LEALTAD</a></li>
       <li><a [routerLink]='["/admin-view-edit"]' [routerLinkActive]="['actived']" *ngIf="is_admin">ADMIN</a></li>
-      <li><a class="socialNetworks"><i class="fab fa-facebook-f"> </i></a></li>
-      <li><a class="socialNetworks"><i class="fab fa-twitter"></i></a></li>
-      <li class="position-relative">
+      <!-- <li><a class="socialNetworks"><i class="fab fa-facebook-f"> </i></a></li>
+      <li><a class="socialNetworks"><i class="fab fa-twitter"></i></a></li> -->
+      <!-- <li class="position-relative">
         <div class="avatar-user" (click)="changeSubmenu()"></div>
         <ul class="submenu-login" *ngIf="show_submenu_login">
           <li [routerLink]='["/login"]' (click)="logout()" *ngIf="hasSession()">Cerrar sesion</li>
           <li [routerLink]='["/login"]' *ngIf="!hasSession()">Iniciar sesion</li>
           <li *ngIf="!hasSession()">Registrarse</li>
         </ul>
-      </li>
+      </li> -->
     </ul>
 </nav>
