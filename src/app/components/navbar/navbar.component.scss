@@ -3,6 +3,7 @@
 #menu {
     #logo {
         display: block;
+        
         a {
             color: white !important;
             text-decoration: none;
@@ -10,6 +11,10 @@
         .h-letter {
             color: #ED1C8F;
             font-size: 80px;
+
+            @media(max-width: 500px){
+                font-size: 40px; 
+            }
         }
     
         .clone-text {
@@ -17,7 +22,6 @@
         }
         float: left;
     }
-
 
     width: 100%;
     display: flex;
@@ -30,11 +34,14 @@
     z-index: 2;
     padding: 0 1.7em;
 
-    ul {
+    > ul {
         display: flex;
         align-items: center;
         height: 120px;
         margin: 0px;
+        @media(max-width: 1300px){
+            display: none;
+        }
         li {
             display: flex;
 
@@ -63,6 +70,15 @@
             }
         }
     }
+    .item-toggle-navbar {
+        color: white;
+        font-size: 40px;
+        display: none;
+        cursor: pointer;
+        @media(max-width: 1300px){
+            display: block;
+        }
+    }
 }
 
 #menu > a:hover,.actived{
@@ -81,4 +97,43 @@
     width: 30px;
     height: 30px;
     cursor: pointer;
+}
+.sidebar-responsive {
+    background-color: black;
+    position: fixed;
+    width: 300px;
+    right: 0;
+    top: 0;
+    height: 100%;
+    padding: 1em;
+    @media(min-width: 1300px){
+        display: none !important;
+    }
+
+
+    .close-icon {
+        color: white;
+        font-size: 30px;
+        position: absolute;
+        top: 0.5em;
+        right: 0.5em;
+        cursor: pointer;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin-top: 2em;
+        font-size: 20px;
+        li {
+            padding: 1em 0;
+            list-style: none;
+            cursor: pointer;
+
+            a {
+                color: white;
+            }
+        }
+    }
 }

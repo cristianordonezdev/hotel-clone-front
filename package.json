@@ -21,6 +21,7 @@
     "@angular/router": "~11.2.4",
     "animate.css": "^4.1.1",
     "bootstrap": "^4.6.2",
+    "bootstrap-icons": "^1.11.3",
     "jquery": "^3.6.0",
     "lightbox2": "^2.11.3",
     "ngx-wow": "^2.0.1",
