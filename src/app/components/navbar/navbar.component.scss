@@ -11,7 +11,7 @@
         .h-letter {
             color: #ED1C8F;
             font-size: 80px;
-
+    
             @media(max-width: 500px){
                 font-size: 40px; 
             }
@@ -22,7 +22,6 @@
         }
         float: left;
     }
-
     width: 100%;
     display: flex;
     align-items: center;
@@ -41,6 +40,14 @@
         margin: 0px;
         @media(max-width: 1300px){
             display: none;
+        }
+        .SERVICIOS {
+            position: relative;
+            &:hover {
+                .submenu {
+                    display: block;
+                }
+            }
         }
         li {
             display: flex;
@@ -68,7 +75,30 @@
                     cursor: pointer;
                 }
             }
+
+            .submenu {
+                top: 1.4em;
+                position: absolute;
+                display: none;
+                background-color: rgba(0,0,0,0.8);
+                width: auto;
+                height: auto;
+                padding-top: 0.5em;
+                li {
+                    padding: 1em 0;
+                    display: flex;
+                    flex-direction: column;
+                    white-space: nowrap;
+                }
+                &:hover {
+                    display: block !important;
+                }
+            }
+            .submenu-toggle {
+                background-color: red;
+            }
         }
+        
     }
     .item-toggle-navbar {
         color: white;
@@ -130,9 +160,18 @@
             padding: 1em 0;
             list-style: none;
             cursor: pointer;
+            width: 100%;
 
             a {
                 color: white;
+                width: 100%;
+            }
+            .subItem {
+                width: 100%;
+                white-space: nowrap;
+            }
+            .mt-45 {
+                margin-top: 2em;
             }
         }
     }

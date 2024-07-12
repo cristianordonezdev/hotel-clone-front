@@ -26,7 +26,6 @@ const appRoutes: Routes = [
     { path: '', component: InicioComponent },
     { path: 'habitaciones', component: HabitacionesComponent },
     { path: 'galeria', component: GaleriaComponent },
-    { path: 'servicios', component: ServiciosComponent },
     { path: 'promociones', component: PromocionesComponent },
     { path: 'contacto', component: ContactoComponent },
     { path: 'programa-de-lealtad', component: ProgramaLealtadComponent },

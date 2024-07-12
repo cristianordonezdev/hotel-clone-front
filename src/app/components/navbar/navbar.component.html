@@ -1,51 +1,33 @@
 <nav id="menu" >
-    <!-- <input type="checkbox" id="check">
-    <label for="check" class="checkbtn">
-      <i class="fas fa-bars"></i>
-    </label> -->
-
     <div id="logo">
       <h1>
         <a [routerLink]='["/"]'><span class="h-letter">H</span>otel <span class="clone-text">clone</span></a>
       </h1>
     </div>
-
     <ul>
 
-      <li *ngFor="let item of navigation_items"><a [routerLink]='[item.route]' [routerLinkActive]="['actived']">{{item.name}}</a></li>
-      <!-- <li><a [routerLink]='["/galeria"]' [routerLinkActive]="['actived']">GALERIA</a></li>
-      <li>
-        
-        <a [routerLinkActive]="['actived']" class="sub">SERVICIOS</a>
-       -->
-        <!-- <ul class="submenu">
+      <li *ngFor="let item of navigation_items" [ngClass]="item.name">
+        <a [routerLink]='[item.route]' [routerLinkActive]="['actived']">{{item.name}}</a>
+        <ul class="submenu" *ngIf="item.name === 'SERVICIOS'">
           <li> <a [routerLink]='["servicios/alimentos-y-bebidas"]' [routerLinkActive]="['actived']" class="subItem">ALIMENTOS Y BEBIDAS</a></li>
           <li> <a [routerLink]='["servicios/menu-sex"]' [routerLinkActive]="['actived']" class="subItem">MENU SEX</a></li>
-        </ul> -->
-      <!-- </li>
-      <li><a [routerLink]='["/promociones"]' [routerLinkActive]="['actived']">PROMOCIONES</a></li>
-
-      <li><a [routerLink]='["/contacto"]' [routerLinkActive]="['actived']">CONTACTO</a></li>
-      
-      <li><a [routerLink]='["/programa-de-lealtad"]' [routerLinkActive]="['actived']">PROGRAMA DE LEALTAD</a></li>
-      <li><a [routerLink]='["/admin-view-edit"]' [routerLinkActive]="['actived']" *ngIf="is_admin">ADMIN</a></li> -->
-
-      <!-- <li><a class="socialNetworks"><i class="fab fa-facebook-f"> </i></a></li>
-      <li><a class="socialNetworks"><i class="fab fa-twitter"></i></a></li> -->
-      <!-- <li class="position-relative">
-        <div class="avatar-user" (click)="changeSubmenu()"></div>
-        <ul class="submenu-login" *ngIf="show_submenu_login">
-          <li [routerLink]='["/login"]' (click)="logout()" *ngIf="hasSession()">Cerrar sesion</li>
-          <li [routerLink]='["/login"]' *ngIf="!hasSession()">Iniciar sesion</li>
-          <li *ngIf="!hasSession()">Registrarse</li>
         </ul>
-      </li> -->
+      </li>
+      
     </ul>
     <div class="sidebar-responsive" [ngClass]="handle_class">
       <i class="bi bi-x-circle-fill close-icon" (click)="handle_class = 'd-none'"></i>
       <ul>        
-        <li *ngFor="let item of navigation_items"><a [routerLink]='[item.route]' [routerLinkActive]="['actived']">{{item.name}}</a></li>
+        <li *ngFor="let item of navigation_items">
+          <a [routerLink]='[item.route]' [routerLinkActive]="['actived']" *ngIf="item.name !== 'SERVICIOS'"> {{item.name}}</a>
+          <div class="d-flex flex-column">
+
+            <a *ngIf="item.name === 'SERVICIOS'" [routerLink]='["servicios/alimentos-y-bebidas"]' [routerLinkActive]="['actived']" class="subItem">ALIMENTOS Y BEBIDAS</a>
+            <a *ngIf="item.name === 'SERVICIOS'" [routerLink]='["servicios/menu-sex"]' [routerLinkActive]="['actived']" class="subItem d-block mt-45">MENU SEX</a>
+          </div>
+        </li>
       </ul>
+      
     </div>
     
     <i class="bi bi-list item-toggle-navbar" (click)="toggleSidebar()"></i>

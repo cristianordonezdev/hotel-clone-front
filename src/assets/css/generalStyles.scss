@@ -1,5 +1,5 @@
 
-@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~bootstrap/dist/css/bootstrap.min.css";
 
 
 *{
@@ -56,51 +56,6 @@
     text-align: center;
     font-weight: bold;
 } */
-.submenu-login > li {
-    line-height: normal;
-    /* padding: 1em; */
-    list-style: none;
-    overflow: hidden;
-}
-.submenu-login > li:first-child:hover {
-    background-color: black;
-    border-top-left-radius: 1em;
-    border-top-right-radius: 1em;
-    cursor: pointer;
-}
-.submenu-login > li:last-child:hover {
-    background-color: black;
-    border-bottom-left-radius: 1em;
-    border-bottom-right-radius: 1em;
-    cursor: pointer;
-}
-/* SUBMENU */
-.submenu{
-    display: none;
-    position: absolute;
-    background-color: rgba(0,0,0,0.8);
-    height: 150px;
-}
-
-.submenu li{
-    width: 100%;
-    line-height: 80px;
-    list-style: none;
-}
-.submenu li a{
-    padding-left:15px ;
-    padding-right: 15px;
-    text-decoration: none;
-    color: rgb(141, 140, 140);
-    letter-spacing: 2px;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.submenu li a:hover{
-   color: white;
-   transition: all 500ms;
-}
 
 /* #menu ul li:hover ul{
     display: block;
@@ -208,10 +163,21 @@
 }
 
 /* CONTENEDOR DE PRINCIPAL */
+.main-container{
+    width: 70%;
+    margin: 0px auto;
+}
+.padding-skip-navbar {
+    padding-top: 10em;
 
+}
 .mineContainer{
     width: 70%;
     margin: 100px auto;
+
+    @media(max-width: 1200px){
+        width: 90%;
+    }
 }
 .mineContainer .caja{
     border-top: 1px solid #1E73BE !important;
@@ -244,8 +210,7 @@
     border-radius: 50px;
     text-decoration: none !important;
     border:2px solid #444;
-    letter-spacing: 2px;
-    
+    letter-spacing: 2px
 }
 .btn1:hover{
     cursor: pointer;

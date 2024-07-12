@@ -1,0 +1,41 @@
+
+#logo-home {
+    display: block;
+    
+    a {
+        color: black !important;
+        text-decoration: none;
+    }
+    .h-letter {
+        color: #ED1C8F;
+        font-size: 80px;
+
+        @media(max-width: 500px){
+            font-size: 40px; 
+        }
+    }
+
+    .clone-text {
+        font-size: 20px;
+    }
+    float: left;
+}
+.texto{
+    position:absolute; 
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+
+}
+
+.texto2{
+    position:absolute; 
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+}
+.image-home-carousel {
+    width: 100%;
+    height: 770px;
+    object-fit: cover;
+}

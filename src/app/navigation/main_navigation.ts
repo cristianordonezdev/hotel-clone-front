@@ -11,7 +11,7 @@ export const main_navigation: INavigation[] = [
     },
     {
         name: 'SERVICIOS',
-        route: '/servicios'
+        route: null
     },
     {
         name: 'PROMOCIONES',

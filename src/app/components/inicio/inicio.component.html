@@ -28,37 +28,24 @@
 
 <div class="mineContainer">
     <div class="row">
-        <div class="caja col-8 pt-2 pb-2">
+        <div class="caja col-md-8 col-12 pt-2 pb-4 mb-4">
             <article>
-                <p>El Hotel ABCentral inspira su diseño en un juego de letras y símbolos que lo convierte en un espacio
-                    único y
-                    divertido para disfrutar en pareja. Nuestras habitaciones han sido creadas para dejar volar la
-                    imaginación y
-                    hacer de su estancia una increíble experiencia.</p>
-                <p>Nuestra misión se concentra en ofrecer todos los servicios y comodidades para vivir los mejores
-                    momentos…no
-                    esperes más y atrévete a ser diferente.</p>
+                <p>El Hotel Clone presenta un diseño único y divertido, inspirado en una mezcla de letras y símbolos, convirtiéndolo en el lugar perfecto para disfrutar en pareja. Nuestras habitaciones están diseñadas para estimular la imaginación y hacer de su estancia una experiencia inolvidable.</p>
+                <p>Nuestra misión es proporcionar todos los servicios y comodidades necesarios para que vivas momentos excepcionales. No esperes más y atrévete a ser diferente con nosotros.</p>
             </article>
-
-
         </div>
-        <div class="col-4">
-            <img src="../../../assets/images/logo_texto_abcentral.png" alt="">
+        <div class="col-md-4 col-12 d-flex align-items-center justify-content-center">
+            <div id="logo-home">
+                <h1>
+                    <a [routerLink]='["/"]'><span class="h-letter">H</span>otel <span class="clone-text">clone</span></a>
+                </h1>
+            </div>
         </div>
     
     </div>
-    <div class="row">
-        <div class="col-8 mt-2">
-            
-        <a class="socialNetworksInicio"><i class="fab fa-facebook-f"></i> </a>
-        <a class="socialNetworksInicio"><i class="fab fa-twitter"></i></a>
-        <a class="socialNetworksInicio"><i class="fas fa-envelope"></i></a>
-
-        <div class="row ">
-            <div class="col mt-5"><a class="btn1 float-left" [routerLink]='["/aviso-de-privacidad"]'>AVISO DE PRIVACIDAD</a></div>
-            <div class="col mt-5 "> <a class="btn2 float-right">BOLSA DE TRABAJO</a></div>
-        </div>
-        </div>
+    <div class="row">    
+        <div class="col-12 mt-5">
+            <a class="btn1 float-left w-100 text-center col-lg-3" [routerLink]='["/aviso-de-privacidad"]'>AVISO DE PRIVACIDAD</a></div>
     </div>
 
 </div>

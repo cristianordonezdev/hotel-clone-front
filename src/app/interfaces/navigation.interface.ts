@@ -1,5 +1,5 @@
 export interface INavigation {
     name: string;
-    route: string;
+    route: string | null;
     
 }
