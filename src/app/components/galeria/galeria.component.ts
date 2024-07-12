@@ -5,7 +5,7 @@ declare var $:any;
 @Component({
   selector: 'app-galeria',
   templateUrl: './galeria.component.html',
-  styleUrls: ['./galeria.component.css']
+  styleUrls: ['./galeria.component.scss']
 })
 export class GaleriaComponent implements OnInit {
   constructor(private wowService: NgwWowService) { 

@@ -21,9 +21,4 @@ export const main_navigation: INavigation[] = [
         name: 'CONTACTO',
         route: '/contacto'
     },
-    {
-        name: 'PROGRAMA DE LEALTAD',
-        route: '/programa-de-lealtad'
-    },
-
 ]

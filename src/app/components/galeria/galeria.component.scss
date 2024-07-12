@@ -28,8 +28,8 @@
     margin-top: -20px;
     margin-bottom: 40px;
 }
-.video{
-    text-align: center ;
+.video {
+    min-height: 600px;
 }
 
 .gap .h32{
@@ -48,6 +48,15 @@
     display: grid;
     grid-template-columns: repeat(4,1fr);
     
+    @media(max-width: 1000px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media(max-width: 800px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media(max-width: 500px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 /* .galeria >div{
     width: 100%; 

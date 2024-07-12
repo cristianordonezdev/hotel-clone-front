@@ -11,7 +11,6 @@ import { GaleriaComponent } from './components/galeria/galeria.component';
 import { ServiciosComponent } from './components/servicios/servicios.component';
 import { PromocionesComponent } from './components/promociones/promociones.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
-import { ProgramaLealtadComponent } from './components/programa-lealtad/programa-lealtad.component';
 import { AvisoDePrivacidadComponent } from './components/aviso-de-privacidad/aviso-de-privacidad.component';
 import { AlimentosYBebidasComponent } from './components/alimentos-y-bebidas/alimentos-y-bebidas.component';
 import { MenuSexComponent } from './components/menu-sex/menu-sex.component';
@@ -35,7 +34,6 @@ import { AddImagesComponent } from './components/mini-components/add-images/add-
     ServiciosComponent,
     PromocionesComponent,
     ContactoComponent,
-    ProgramaLealtadComponent,
     AvisoDePrivacidadComponent,
     AlimentosYBebidasComponent,
     MenuSexComponent,
