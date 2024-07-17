@@ -19,11 +19,11 @@
       <i class="bi bi-x-circle-fill close-icon" (click)="handle_class = 'd-none'"></i>
       <ul>        
         <li *ngFor="let item of navigation_items">
-          <a [routerLink]='[item.route]' [routerLinkActive]="['actived']" *ngIf="item.name !== 'SERVICIOS'"> {{item.name}}</a>
+          <a (click)="handleClickRouteResponsive(item.route)" [routerLinkActive]="['actived']" *ngIf="item.name !== 'SERVICIOS'" class="subItem"> {{item.name}}</a>
           <div class="d-flex flex-column">
 
-            <a *ngIf="item.name === 'SERVICIOS'" [routerLink]='["servicios/alimentos-y-bebidas"]' [routerLinkActive]="['actived']" class="subItem">ALIMENTOS Y BEBIDAS</a>
-            <a *ngIf="item.name === 'SERVICIOS'" [routerLink]='["servicios/menu-sex"]' [routerLinkActive]="['actived']" class="subItem d-block mt-45">MENU SEX</a>
+            <a (click)="handleClickRouteResponsive('servicios/alimentos-y-bebidas')" *ngIf="item.name === 'SERVICIOS'" [routerLinkActive]="['actived']" class="subItem">ALIMENTOS Y BEBIDAS</a>
+            <a (click)="handleClickRouteResponsive('servicios/menu-sex')" *ngIf="item.name === 'SERVICIOS'" [routerLinkActive]="['actived']" class="subItem d-block mt-45">MENU SEX</a>
           </div>
         </li>
       </ul>

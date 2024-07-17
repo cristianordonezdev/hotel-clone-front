@@ -20,7 +20,8 @@ export class ContactoComponent implements OnInit {
     message: new FormControl('', Validators.required),
   });
   ngOnInit(): void {
-      
+    window.scrollTo(0,0);
+ 
   }
 
 }
