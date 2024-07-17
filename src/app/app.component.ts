@@ -8,12 +8,11 @@ declare var $:any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'HotelABCentral';
+  title = 'HotelClone';
 
   constructor(private router: Router) {
   }
   ngOnInit(): void {
-    console.log(this.router)
     window.addEventListener("scroll",function(){
       let offset=window.pageYOffset;
       var going =$(".goingUp");

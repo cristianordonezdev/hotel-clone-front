@@ -36,4 +36,4 @@ jobs:
           lftp -c "
           set ssl:verify-certificate no;
           open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER;
-          mirror --reverse --delete --verbose ./dist /domains/cristianordonez.dev/public_html/apps/hotel-clone"
+          mirror --reverse --delete --verbose ./dist/hotel-clone /domains/cristianordonez.dev/public_html/apps/hotel-clone"

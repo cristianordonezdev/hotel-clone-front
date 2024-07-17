@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "HotelABCentral": {
+    "hotel-clone": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/HotelABCentral",
+            "outputPath": "dist/hotel-clone",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -77,18 +77,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "HotelABCentral:build"
+            "browserTarget": "hotel-clone:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "HotelABCentral:build:production"
+              "browserTarget": "hotel-clone:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "HotelABCentral:build"
+            "browserTarget": "hotel-clone:build"
           }
         },
         "test": {
@@ -124,16 +124,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "HotelABCentral:serve"
+            "devServerTarget": "hotel-clone:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "HotelABCentral:serve:production"
+              "devServerTarget": "hotel-clone:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "HotelABCentral"
+  "defaultProject": "hotel-clone"
 }
