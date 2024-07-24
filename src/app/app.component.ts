@@ -36,7 +36,4 @@ export class AppComponent {
       return false;
     });
   }
-  verifyRoute():boolean {
-    return this.router.url !== '/login';
-  }
 }

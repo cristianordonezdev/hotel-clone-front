@@ -1,13 +1,13 @@
 <section class="main-container-admin-view">
-  <div class="d-flex flex-column text-white">
+  <div class="">
     <ul>
-      <li><a class="underline text-white cursor-pointer" (click)="changeType(1)" *ngIf="type_admin === 0">Administrar Imagenes</a></li>
-    </ul>
-  </div>
+      <li *ngFor="let section of sections" class="mb-3">
+        {{ section.title}}
 
-  <div class="d-flex flex-column text-white" *ngIf="type_admin === 1">
-    <ul class="none-decoration">
-      <li><a class="underline text-white cursor-pointer" [routerLink]="['/admin-view-edit/images']" routerLinkActive="router-link-active" >Agregar imagenes</a></li>
+        <ul>
+          <li *ngFor="let subsection of section.actions" class="subsection-li">{{subsection.name}}</li>
+        </ul>
+      </li>
     </ul>
   </div>
 </section>

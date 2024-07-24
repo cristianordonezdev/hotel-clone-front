@@ -1,5 +1,4 @@
-
-@import "~bootstrap/dist/css/bootstrap.min.css";
+@import '~bootstrap/scss/bootstrap';
 
 
 *{
@@ -43,24 +42,6 @@
 
 }
 
-/* .submenu-login {
-    position: absolute;
-    width: 150px;
-    right: 0em;
-    margin-top: 1em;
-    background-color: gray;
-    display: flex;
-    flex-direction: column;
-    border-radius: 1em;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-} */
-
-/* #menu ul li:hover ul{
-    display: block;
-} */
-
 .checkbtn{
     color:rgb(141, 140, 140);
     font-size: 30px;
@@ -73,18 +54,6 @@
 #check{
     display: none;
 }
-/* RESPONSIVE */
-/* @media(max-width:660px){
-    .carousel img{
-    background-position-y: 150px;
-    background-position: top;
-    }
-} */
-
-/* @media(max-width:1625px){
-    .carousel img{
-    }
-} */
 .position-relative {
     position: relative;
 }
@@ -153,14 +122,6 @@
     height: 95%;
 }
 
-
-.btn{
-    position: relative;
-    color: white;
-    top:700px;
-    left:900px;
-    background-color: white;
-}
 
 /* CONTENEDOR DE PRINCIPAL */
 .main-container{

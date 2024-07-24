@@ -17,6 +17,7 @@ import { MenuSexComponent } from './components/menu-sex/menu-sex.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminViewComponent } from './components/admin-view/admin-view.component';
 import { ImagesAdminComponent } from './components/admin-view/images-admin/images-admin.component';
+import { AuthGuard } from 'src/shared/guards/auth.guards';
 
 
 //DEFINICION DE RUTAS
@@ -30,8 +31,8 @@ const appRoutes: Routes = [
     { path: 'aviso-de-privacidad', component: AvisoDePrivacidadComponent },
     { path: 'servicios/alimentos-y-bebidas', component: AlimentosYBebidasComponent },
     { path: 'servicios/menu-sex', component: MenuSexComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'admin-view-edit', component: AdminViewComponent },
+    { path: 'admin', component: LoginComponent },
+    { path: 'admin/home', component: AdminViewComponent, canActivate:[AuthGuard] },
     { path: 'admin-view-edit/images', component: ImagesAdminComponent },
 ];
 

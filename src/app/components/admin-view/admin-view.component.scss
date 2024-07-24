@@ -1,0 +1,23 @@
+.main-container-admin-view {
+    background-color: #282828;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    color: white;
+    padding-top: 1em;
+    font-size: 20px;
+
+    ul {
+        .subsection-li {
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+.none-decoration {
+    list-style: none;
+}
