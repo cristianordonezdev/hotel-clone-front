@@ -1,5 +1,18 @@
 
 /* MENU */
+.admin-view {
+    background-color: black;
+    height: 80px;
+    color: white;
+
+    .font-30 {
+        font-size: 30px;
+        margin-left: 0.3em;
+    }
+    .cursor-pointer {
+        cursor: pointer;
+    }
+}
 #menu {
     #logo {
         display: block;

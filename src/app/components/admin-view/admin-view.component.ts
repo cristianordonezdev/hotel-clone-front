@@ -3,15 +3,21 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-admin-view',
   templateUrl: './admin-view.component.html',
-  styleUrls: ['./admin-view.component.css']
+  styleUrls: ['./admin-view.component.scss'],
 })
 export class AdminViewComponent implements OnInit {
-  type_admin: number = 0
-  constructor() { }
+  public sections: any[] = [
+    {
+      title: 'Home',
+      actions: [{ name: 'Carrusel' }, { name: 'Info principal' }],
+    },
+    {
+      title: 'Habitaciones',
+      actions: [{ name: 'Listar' }, { name: 'Crear' }],
+    },
+  ];
 
-  ngOnInit(): void {
-  }
-  changeType(num: number) {
-    this.type_admin = num;
-  }
+  constructor() {}
+
+  ngOnInit(): void {}
 }

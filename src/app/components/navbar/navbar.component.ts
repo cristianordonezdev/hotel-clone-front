@@ -37,4 +37,7 @@ export class NavbarComponent implements OnInit {
     this._router.navigate([`/${route}`]);
     this.handle_class = 'd-none'
   }
+  verifyRoute():boolean {
+    return !this._router.url.includes('/admin');
+  }
 }

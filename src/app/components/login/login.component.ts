@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   providers: [UserService],
 })
 export class LoginComponent implements OnInit {
-  constructor(private _servise: UserService, private _router: Router) {
+  constructor(private _service: UserService, private _router: Router) {
    
   }
   show_error_msg: boolean = false
@@ -23,13 +23,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   submitApplication() {
-    this._servise.login(
+    this._service.login(
       this.applyForm.value.username ?? '',
       this.applyForm.value.password ?? '',
     ).subscribe((response) => {
       localStorage.setItem('token', response.token);
       this.saveUser(response);
-      this._router.navigate(['/']);
+      this._router.navigate(['/admin/home']);
     },(error) => {
       if (error.status >= 400) this.show_error_msg = true;
     })
