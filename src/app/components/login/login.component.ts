@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/userService';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { setUserData } from '../../libs/user';
 
 @Component({
   selector: 'app-login',
@@ -35,9 +36,9 @@ export class LoginComponent implements OnInit {
     })
   }
   saveUser(response: any): void {
-    localStorage.setItem('userData', JSON.stringify({
+    setUserData({
       user: response.nameUser,
       roles: response.roles,
-    }))
+    });
   }
 }

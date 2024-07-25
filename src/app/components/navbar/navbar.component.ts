@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   constructor(private _utils: Utils, private _router: Router) { }
   show_submenu_login: boolean = false;
-  is_admin: boolean = this._utils.isAdmin();
   navigation_items: INavigation[] = main_navigation;
   handle_class: string = 'd-none';
 

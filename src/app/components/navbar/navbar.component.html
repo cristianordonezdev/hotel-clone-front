@@ -32,11 +32,11 @@
     
     <i class="bi bi-list item-toggle-navbar" (click)="toggleSidebar()"></i>
 </nav>
-<nav *ngIf="!verifyRoute()" class="admin-view">
+<nav *ngIf="!verifyRoute()" class="admin-view" [routerLink]='["/"]'>
   <div class="d-flex justify-content-between align-items-center w-100 px-5 h-100">
-    <h3>Hotel Clone</h3>
+    <h3 class="cursor-pointer">Hotel Clone</h3>
 
-    <div class="d-flex align-items-center cursor-pointer"> Admin 
+    <div class="d-flex align-items-center cursor-pointer" *ngIf="hasSession()"> Admin 
       <i class="bi bi-person-circle font-30"></i>
     </div>
   </div>
