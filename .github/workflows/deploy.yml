@@ -23,7 +23,7 @@ jobs:
 
       - name: Replace environment variables
         run: |
-          echo "export const environment = { production: true, url_core: '${{ secrets.API_URL }}' };" > ./src/environments/environment.prod.ts
+          echo "export const environment = { production: true, url_core: '${{ secrets.API_URL }}' };" > ./src/environments/environment.ts
 
       - name: Build the application
         run: npm run build
@@ -40,4 +40,4 @@ jobs:
           lftp -c "
           set ssl:verify-certificate no;
           open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER;
-          mirror --reverse --delete --verbose ./dist/hotel-clone /domains/cristianordonez.dev/public_html/apps/hotel-clone"
+          mirror --reverse --delete --verbose --exclude .htaccess ./dist/hotel-clone /domains/cristianordonez.dev/public_html/apps/hotel-clone"
