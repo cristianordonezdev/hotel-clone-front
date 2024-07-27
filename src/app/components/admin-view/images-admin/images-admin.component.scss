@@ -1,0 +1,52 @@
+.main-container-admin-view {
+    background-color: #282828;
+    color: white;
+    height: 100vh;
+    padding: 0 1em;
+
+    .grid-images {
+        display: grid;
+        width: 100%;
+        // height: 100vh;
+        grid-template-columns: repeat(4, 1fr);
+        // grid-template-rows: ;
+        grid-gap: 1em;
+        margin-top: 1em;
+
+        @media (max-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 576px) {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-item {
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                cursor: pointer;
+            }
+    
+            .container-hover-delete {
+                background-color: rgba(0, 0, 0, 0.356);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: none;
+            }
+
+            &:hover {
+                .container-hover-delete {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+
+    }
+}

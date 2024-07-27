@@ -33,7 +33,7 @@ const appRoutes: Routes = [
     { path: 'servicios/menu-sex', component: MenuSexComponent },
     { path: 'admin', component: LoginComponent },
     { path: 'admin/home', component: AdminViewComponent, canActivate:[AuthGuard] },
-    { path: 'admin-view-edit/images', component: ImagesAdminComponent },
+    { path: 'admin/images/:type', component: ImagesAdminComponent, canActivate:[AuthGuard] },
 ];
 
 //EXPORTACION DE MI APP.MODULE

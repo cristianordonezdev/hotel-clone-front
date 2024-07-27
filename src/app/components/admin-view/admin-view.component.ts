@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-view',
@@ -9,7 +10,7 @@ export class AdminViewComponent implements OnInit {
   public sections: any[] = [
     {
       title: 'Home',
-      actions: [{ name: 'Carrusel' }, { name: 'Info principal' }],
+      actions: [{ name: 'Carrusel', route: 'admin/images/carousel' }, { name: 'Info principal' }],
     },
     {
       title: 'Habitaciones',
@@ -17,7 +18,12 @@ export class AdminViewComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+
+  constructor(private _router: Router) {}
 
   ngOnInit(): void {}
+
+  goToSection(rute: string): void {
+    this._router.navigate([rute]);
+  }
 }
