@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ImagesService } from 'src/app/services/imagesService';
-
-
-declare var $:any;
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-images-admin',
@@ -18,9 +16,13 @@ export class ImagesAdminComponent implements OnInit {
   images_types: any[] = []
   type: string | undefined;
   open_add_images: boolean = false;
+  private _files: File[] = [];
+  modalRef?: BsModalRef;
 
   constructor(
     private _service: ImagesService,
+    private _route: ActivatedRoute,
+    private modalService: BsModalService
   ) { }
   
 
@@ -52,38 +54,46 @@ export class ImagesAdminComponent implements OnInit {
       console.log(error)
     })
   }
-  deleteImage():void {
-    $('#modalConfirm').modal('hide')
-    $('.modal-backdrop').remove();
-    this._service.deleteImage(this.image_selected_id).subscribe((response) => {
-      this.images = this.images.filter((image) => image.id !== this.image_selected_id)
+  deleteImage(id: string):void {
+    this._service.deleteImage(id).subscribe((response) => {
+      console.log(response)
+      this.images = this.images.filter((image) => image.id !== id)
+      this.image_selected_id = '';
     }, (error) => {
       console.log(error)
     })
   }
-  confirmToDelete(id: string): void {
+  onFileSelected(event: any) {
+    this._files = event.target.files;
+    if (this._files.length > 5) {
+      alert(`You can upload a maximum of 5 files.`);
+      event.target.value = ''; // Clear the input
+      return;
+    }
+  }
+  saveImages() {
+    const form_data: FormData = new FormData();
+    form_data.append('imagetypeid', 'e4567686-1b4d-483d-a374-9e99306c8e7b');
+
+    for (let i = 0; i < this._files.length; i++) {
+      form_data.append('File', this._files[i]);
+    }
+    this._service.uploadImages(form_data).subscribe((response) => {
+      this.images.push(...response);
+    })
+  }
+  openModal(template: any, id: string) {
     this.image_selected_id = id;
-    $('#modalConfirm').modal('show');
+    this.modalRef = this.modalService.show(template, { class: 'modal-dialog-centered' });
   }
-  openFile() {
-    $('#fileManager').click();
+
+  confirm(): void {
+    this.modalRef?.hide();
+    this.deleteImage(this.image_selected_id);
   }
-  // onFilesSelected(event: any) {
-  //   setTimeout(() => {
-  //     this.loading = true;
-  //     const files: File[] = event.files;
-  //     const data: FormData = new FormData();
-  //     data.append('imagetypeid', 'e4567686-1b4d-483d-a374-9e99306c8e7b');
-  //     for (let index = 0; index < files.length; index++) {
-  //       data.append('file', files[index]);      
-  //     }
-  //     this._service.uploadImages(data).subscribe((response) => {
-  //       this.images = this.images.concat(response);
-  //       this.loading = false;
-  //     }, (error) => {
-  //       console.log(error)
-  //       this.loading = false;
-  //     })
-  //   }, 1000);
-  // }
+
+  decline(): void {
+    this.modalRef?.hide();
+    this.image_selected_id = '';
+  }
 }
