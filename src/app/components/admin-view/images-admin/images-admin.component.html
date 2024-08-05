@@ -1,7 +1,9 @@
-<section class="main-container-admin-view pt-10">
-  <div class="w-100 d-flex justify-content-center flex-wrap">
-    <div class="w-100 d-flex justify-content-center">
-      <button class="p-2 rounded-lg mb-4" (click)="open_add_images = true" *ngIf="!open_add_images">Agregar nuevas imagenes</button>
+<section class="main-container-admin-view">
+  <div class="w-1400">    
+    <label for="form_files_multiples" class="form-label">Agregar imagenes</label>
+    <div class="input-group mb-3">
+      <input type="file" class="form-control" (change)="onFileSelected($event)" id="form_files_multiples" multiple accept=".jpg, .jpeg, .png" max="5">
+      <button type="button" class="btn btn-primary" (click)="saveImages()">Guardar</button>
     </div>
     <div class="grid-images">
       <div class="grid-item position-relative" *ngFor="let img of images">

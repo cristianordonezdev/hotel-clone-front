@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ImagesService } from 'src/app/services/imagesService';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-images-admin',
   templateUrl: './images-admin.component.html',
-  styleUrls: ['./images-admin.component.css'],
+  styleUrls: ['./images-admin.component.scss'],
   providers: [ImagesService]
 })
 export class ImagesAdminComponent implements OnInit {
@@ -14,7 +15,6 @@ export class ImagesAdminComponent implements OnInit {
   files_upload: any[] = [];
   loading: boolean = false;
   images_types: any[] = []
-  type: string | undefined;
   open_add_images: boolean = false;
   private _files: File[] = [];
   modalRef?: BsModalRef;
@@ -27,7 +27,7 @@ export class ImagesAdminComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.getImagesTypes();
+    // this.getImagesTypes();
     this.getImages();
   }
   getImagesTypes(): void {
@@ -37,18 +37,11 @@ export class ImagesAdminComponent implements OnInit {
       console.log(error)
     })
   }
-  filterBy(type: string) {
-    this.type = type;
-    // Crea un nuevo objeto con los mismos valores de params y queryParams del actual
-    // Navega a la misma ruta con los nuevos parámetros
-  
-    // this._route.snapshot.params.type = this.type;
-    // this._router.navigate([], { queryParams: {} });
-    console.log('entre', this.type)
-    this.getImages();
-  }
   getImages(): void {
-    this._service.getImages(this.type).subscribe((response) => {
+    const type = typeof this._route.snapshot.params.type === 'string' ? this._route.snapshot.params.type : undefined;
+    console.log(type)
+
+    this._service.getImages(type).subscribe((response) => {
       this.images = response;
     }, error => {
       console.log(error)
