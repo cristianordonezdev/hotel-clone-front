@@ -25,6 +25,7 @@
     "crypto-js": "^4.2.0",
     "jquery": "^3.6.0",
     "lightbox2": "^2.11.3",
+    "ngx-bootstrap": "^6.2.0",
     "ngx-wow": "^2.0.1",
     "rxjs": "~6.6.0",
     "rxjs-compat": "^6.6.7",

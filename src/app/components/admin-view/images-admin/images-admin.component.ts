@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ImagesService } from 'src/app/services/imagesService';
-
-
-declare var $:any;
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-images-admin',
@@ -19,10 +17,12 @@ export class ImagesAdminComponent implements OnInit {
   images_types: any[] = []
   open_add_images: boolean = false;
   private _files: File[] = [];
+  modalRef?: BsModalRef;
 
   constructor(
     private _service: ImagesService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private modalService: BsModalService
   ) { }
   
 
@@ -51,13 +51,10 @@ export class ImagesAdminComponent implements OnInit {
     this._service.deleteImage(id).subscribe((response) => {
       console.log(response)
       this.images = this.images.filter((image) => image.id !== id)
+      this.image_selected_id = '';
     }, (error) => {
       console.log(error)
     })
-  }
-  confirmToDelete(id: string): void {
-    this.image_selected_id = id;
-    $('#modalConfirm').modal('show');
   }
   onFileSelected(event: any) {
     this._files = event.target.files;
@@ -77,5 +74,19 @@ export class ImagesAdminComponent implements OnInit {
     this._service.uploadImages(form_data).subscribe((response) => {
       this.images.push(...response);
     })
+  }
+  openModal(template: any, id: string) {
+    this.image_selected_id = id;
+    this.modalRef = this.modalService.show(template, { class: 'modal-dialog-centered' });
+  }
+
+  confirm(): void {
+    this.modalRef?.hide();
+    this.deleteImage(this.image_selected_id);
+  }
+
+  decline(): void {
+    this.modalRef?.hide();
+    this.image_selected_id = '';
   }
 }
