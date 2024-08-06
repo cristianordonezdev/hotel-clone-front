@@ -1,0 +1,28 @@
+<section class="main-container-admin-view">
+
+    <app-breadcrumb [links]="links"></app-breadcrumb>
+    
+    <form [formGroup]="form_room">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" rows="3" formControlName="description"name="description" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="file" class="form-label">File</label>
+        <input type="file" class="form-control" id="file" (change)="onFileChange($event)" name="file" multiple>
+    </div>
+    <div class="mb-3">
+        <label for="characteristics" class="form-label">Characteristics</label>
+        <input type="text" class="form-control" id="characteristics" formControlName="characteristics" name="characteristics" required>
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" class="form-control" id="price" formControlName="price" name="price" required>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="submitForm()" [disabled]="form_room.invalid || files.length === 0">Submit</button>
+    </form>
+</section>

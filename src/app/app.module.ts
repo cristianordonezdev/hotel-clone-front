@@ -25,6 +25,9 @@ import { LoadingIconOverlayComponent } from './components/mini-components/loadin
 import { AddImagesComponent } from './components/mini-components/add-images/add-images.component' //PARA QUE PUEDA UTILIZAR MIS PETICIONES AJAX
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { RoomsAdminComponent } from './components/admin-view/rooms-admin/rooms-admin.component';
+import { RoomsService } from './services/roomsService';
+import { RoomsCreateAdminComponent } from './components/admin-view/rooms-create-admin/rooms-create-admin.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,8 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
     LoadingIconOverlayComponent,
     AddImagesComponent,
     BreadcrumbComponent,
+    RoomsAdminComponent,
+    RoomsCreateAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,8 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
     ModalModule.forRoot(),
   ],
   providers: [
-    appRoutingProviders
+    appRoutingProviders,
+    RoomsService,
   ],
   bootstrap: [AppComponent]
 })
