@@ -1,0 +1,13 @@
+.breadcrumb {
+    padding-top: 2em;
+    a {
+        color: white !important;
+    }
+    .breadcrumb-item::before {
+        color: white;
+    }
+
+    .active {
+        color: white;
+    }
+}

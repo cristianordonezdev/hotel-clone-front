@@ -24,6 +24,7 @@ import { ImagesAdminComponent } from './components/admin-view/images-admin/image
 import { LoadingIconOverlayComponent } from './components/mini-components/loading-icon-overlay/loading-icon-overlay.component';
 import { AddImagesComponent } from './components/mini-components/add-images/add-images.component' //PARA QUE PUEDA UTILIZAR MIS PETICIONES AJAX
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ImagesAdminComponent,
     LoadingIconOverlayComponent,
     AddImagesComponent,
+    BreadcrumbComponent,
   ],
   imports: [
     BrowserModule,
