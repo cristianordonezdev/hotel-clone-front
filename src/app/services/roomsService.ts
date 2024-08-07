@@ -24,4 +24,8 @@ export class RoomsService {
     createRoom(form_data: FormData): Observable<any> {
         return this._http.post(`${this.utils.getCoreUrl()}/room/`, form_data, { headers: this.headers });
     }
+
+    getOneRoom(roomId: string): Observable<any> {
+        return this._http.get(`${this.utils.getCoreUrl()}/room/${roomId}`, { headers: this.headers });
+    }
 }

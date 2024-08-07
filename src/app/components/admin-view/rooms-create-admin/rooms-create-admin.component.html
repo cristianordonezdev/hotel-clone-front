@@ -1,28 +1,38 @@
 <section class="main-container-admin-view">
-
-    <app-breadcrumb [links]="links"></app-breadcrumb>
+    <div class="max-width-1400">
+        <app-breadcrumb [links]="links" [buttonDetails]="action === 'detail' ? ButtonDetails : null"></app-breadcrumb>
+        {{action}} dhfgkjhfdj
+        <form [formGroup]="form_room">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="name" formControlName="name" name="name" required placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea class="form-control" id="description" rows="3" formControlName="description"name="description" required placeholder="Descripción"></textarea>
+        </div>
+        <div class="mb-3" *ngIf="action === 'create'">
+            <label for="file" class="form-label">Archivos</label>
+            <input type="file" class="form-control" id="file" (change)="onFileChange($event)" name="file" multiple>
+        </div>
+        <div class="mb-3">
+            <label for="characteristics" class="form-label">Características</label>
+            <input type="text" class="form-control" id="characteristics" formControlName="characteristics" name="characteristics" required placeholder="Característica 1, característica 2, característica 3">
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="price" formControlName="price" name="price" required placeholder="$ 500">
+        </div>
+            <button 
+                type="submit" 
+                *ngIf="action === 'create'"
+                class="btn btn-primary" (click)="submitForm()" [disabled]="form_room.invalid || files.length === 0">Crear</button>
+        </form>
     
-    <form [formGroup]="form_room">
-    <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" formControlName="name" name="name" required>
+        <div *ngIf="action !== 'create'" class="grid">
+            <div *ngFor="let image of images" class="grid-item w-100">
+                <img [src]="image" alt="Room Image" class="img-grid-detail">
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" rows="3" formControlName="description"name="description" required></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="file" class="form-label">File</label>
-        <input type="file" class="form-control" id="file" (change)="onFileChange($event)" name="file" multiple>
-    </div>
-    <div class="mb-3">
-        <label for="characteristics" class="form-label">Characteristics</label>
-        <input type="text" class="form-control" id="characteristics" formControlName="characteristics" name="characteristics" required>
-    </div>
-    <div class="mb-3">
-        <label for="price" class="form-label">Price</label>
-        <input type="number" class="form-control" id="price" formControlName="price" name="price" required>
-    </div>
-    <button type="submit" class="btn btn-primary" (click)="submitForm()" [disabled]="form_room.invalid || files.length === 0">Submit</button>
-    </form>
 </section>

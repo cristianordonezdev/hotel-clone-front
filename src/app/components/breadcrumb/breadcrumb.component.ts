@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -6,11 +7,16 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./breadcrumb.component.css']
 })
 export class BreadcrumbComponent implements OnInit {
-  @Input() links?:any;
+  @Input() links?: any;
+  @Input() buttonDetails?: any;
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
   }
-
+  handleActionButton() {
+    if (this.buttonDetails) {
+      this._router.navigate(this.buttonDetails.route)
+    }
+  }
 }
