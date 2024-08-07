@@ -10,11 +10,11 @@ export class AdminViewComponent implements OnInit {
   public sections: any[] = [
     {
       title: 'Home',
-      actions: [{ name: 'Carrusel', route: 'admin/images/carousel' }, { name: 'Info principal' }],
+      actions: [{ name: 'Carrusel', route: 'admin/images/carousel' }],
     },
     {
       title: 'Habitaciones',
-      actions: [{ name: 'Listar' }, { name: 'Crear' }],
+      actions: [{ name: 'Listar', route: 'admin/rooms/list' }, { name: 'Crear' }],
     },
   ];
 

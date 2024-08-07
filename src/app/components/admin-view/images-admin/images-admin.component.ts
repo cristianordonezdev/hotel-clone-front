@@ -19,6 +19,17 @@ export class ImagesAdminComponent implements OnInit {
   private _files: File[] = [];
   modalRef?: BsModalRef;
 
+  public links:any =[
+    {
+      url:'/admin/home',
+      label:'Inicio'
+    },
+    {
+      url:'admin/images/carousel',
+      label:'Images de carousel'
+    },
+  ];
+
   constructor(
     private _service: ImagesService,
     private _route: ActivatedRoute,

@@ -18,6 +18,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminViewComponent } from './components/admin-view/admin-view.component';
 import { ImagesAdminComponent } from './components/admin-view/images-admin/images-admin.component';
 import { AuthGuard } from 'src/shared/guards/auth.guards';
+import { RoomsAdminComponent } from './components/admin-view/rooms-admin/rooms-admin.component';
+import { RoomsCreateAdminComponent } from './components/admin-view/rooms-create-admin/rooms-create-admin.component';
 
 
 //DEFINICION DE RUTAS
@@ -34,6 +36,8 @@ const appRoutes: Routes = [
     { path: 'admin', component: LoginComponent },
     { path: 'admin/home', component: AdminViewComponent, canActivate:[AuthGuard] },
     { path: 'admin/images/:type', component: ImagesAdminComponent, canActivate:[AuthGuard] },
+    { path: 'admin/rooms/list', component: RoomsAdminComponent, canActivate:[AuthGuard] },
+    { path: 'admin/rooms/create', component: RoomsCreateAdminComponent, canActivate:[AuthGuard] },
 ];
 
 //EXPORTACION DE MI APP.MODULE

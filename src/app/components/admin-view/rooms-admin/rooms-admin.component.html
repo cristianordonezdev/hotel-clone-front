@@ -1,0 +1,33 @@
+<section class="main-container-admin-view">
+
+    <app-breadcrumb [links]="links"></app-breadcrumb>
+    
+    <button type="button" class="btn btn-primary mb-3" [routerLink]="['/admin/rooms/create']">Crear habitación</button>
+
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-3 mb-3" *ngFor="let item of rooms">
+            <div class="card w-100 position-relative">
+                <img [src]="item.images[0]" class="card-img-top img-custom-card-room" [alt]="item.name">
+                <div class="card-body">
+                    <h5>{{item.name}}</h5>
+                </div>
+
+                <div class="container-trash-icon" (click)="openModal(template, item)">
+                    <i class="bi bi-trash"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #template>
+<div class="modal-dialog-centered">
+    <div class="modal-content">
+    <div class="modal-body text-center">
+        <p>¿Estás seguro de que quieres eliminar esta habitacion {{room_selected.name}}?</p>
+        <button type="button" class="btn btn-danger" (click)="confirm()">Sí, la quiero eliminar.</button>
+        <button type="button" class="btn btn-secondary ms-3" (click)="decline()">No</button>
+    </div>
+    </div>
+</div>
+</ng-template>
