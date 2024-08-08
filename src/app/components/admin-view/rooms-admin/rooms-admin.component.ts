@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomsService } from 'src/app/services/roomsService';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rooms-admin',
@@ -13,9 +15,12 @@ export class RoomsAdminComponent implements OnInit {
   public modalRef?: BsModalRef;
   public room_selected: any = {}
 
+
   constructor(
     private _service: RoomsService,
-    private _modal_service: BsModalService
+    private _modal_service: BsModalService,
+    private toastr: ToastrService,
+    private _router: Router,
   ) { 
   }
 
@@ -25,13 +30,21 @@ export class RoomsAdminComponent implements OnInit {
       label:'Inicio'
     },
     {
-      url:'admin/rooms/list',
+      url:'/admin/rooms/list',
       label:'Habitaciones'
     },
   ];
 
+  public buttonDetails: any = {
+    label: 'Crear habitación',
+    route: ['/admin/rooms/create', '']
+  }
+
   ngOnInit(): void {
     this.getRooms()
+    this.showSuccess()
+  }
+  showSuccess() {
   }
 
   getRooms():any {
@@ -49,9 +62,9 @@ export class RoomsAdminComponent implements OnInit {
         this.room_selected = {}
         this.modalRef?.hide();
       }
-      console.log(response)
+      this.toastr.success('La habitación ha sido borrada exitosamente', 'Éxito')
     }, err => {
-      console.log(err)
+      this.toastr.error('Algo salio mal al tratar de eliminar la habitación', 'Error')
     })
 
   }
@@ -67,5 +80,9 @@ export class RoomsAdminComponent implements OnInit {
   decline(): void {
     this.modalRef?.hide();
     this.room_selected = {};
+  }
+
+  goToDetail(id: string): void {
+    this._router.navigate(['/admin/rooms/detail', id])
   }
 }
