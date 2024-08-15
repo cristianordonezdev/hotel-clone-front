@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ImagesService } from 'src/app/services/imagesService';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-images-admin',
@@ -25,7 +26,7 @@ export class ImagesAdminComponent implements OnInit {
       label:'Inicio'
     },
     {
-      url:'admin/images/carousel',
+      url:'/admin/images/carousel',
       label:'Images de carousel'
     },
   ];
@@ -33,7 +34,8 @@ export class ImagesAdminComponent implements OnInit {
   constructor(
     private _service: ImagesService,
     private _route: ActivatedRoute,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private _toast: ToastrService
   ) { }
   
 
@@ -50,8 +52,6 @@ export class ImagesAdminComponent implements OnInit {
   }
   getImages(): void {
     const type = typeof this._route.snapshot.params.type === 'string' ? this._route.snapshot.params.type : undefined;
-    console.log(type)
-
     this._service.getImages(type).subscribe((response) => {
       this.images = response;
     }, error => {
@@ -63,6 +63,7 @@ export class ImagesAdminComponent implements OnInit {
       console.log(response)
       this.images = this.images.filter((image) => image.id !== id)
       this.image_selected_id = '';
+      this._toast.success('Exito', 'La imagen ha sido eliminada')
     }, (error) => {
       console.log(error)
     })
@@ -83,6 +84,8 @@ export class ImagesAdminComponent implements OnInit {
       form_data.append('File', this._files[i]);
     }
     this._service.uploadImages(form_data).subscribe((response) => {
+      this._toast.success('Exito', 'Las imagenes han sido guardadas')
+
       this.images.push(...response);
     })
   }

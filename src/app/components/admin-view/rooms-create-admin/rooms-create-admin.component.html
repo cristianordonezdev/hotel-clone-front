@@ -1,13 +1,59 @@
 <section class="main-container-admin-view">
+    <div class="max-width-1400">
+        <app-breadcrumb [links]="links"></app-breadcrumb>
+        <form [formGroup]="form_room">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            {{action}}
+            <input type="text" class="form-control" formControlName="name" placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea class="form-control" id="description" rows="3" formControlName="description"name="description"
+             required placeholder="Descripción"></textarea>
+        </div>
+        <div class="mb-3" *ngIf="action === 'create'">
+            <label for="file" class="form-label">Imagenes</label>
+            <input type="file" class="form-control" id="file" (change)="onFileChange($event)" name="file" multiple accept=".jpg,.png,.jpeg">
+        </div>
+        <div class="mb-3">
+            <label for="characteristics" class="form-label">Características</label>
+            <input type="text" class="form-control" id="characteristics" formControlName="characteristics" name="characteristics" required placeholder="Característica 1, característica 2, característica 3">
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="price" formControlName="price" name="price" required placeholder="$ 500">
+        </div>
+            <button 
+                type="submit" 
+                *ngIf="action === 'create'"
+                class="btn btn-primary" (click)="submitForm()" [disabled]="form_room.invalid || files.length === 0">Crear
+            </button>
+            <button 
+                type="submit" 
+                *ngIf="action === 'edit'"
+                class="btn btn-primary" (click)="updateRoom()" [disabled]="form_room.invalid">Actualizar
+            </button>
+            <div *ngIf="action !== 'create'" class="mt-4">
 
-    <app-breadcrumb [links]="links"></app-breadcrumb>
+                <h4>Imagenes</h4>
+                <div class="input-group mb-3" *ngIf="action === 'edit'">
+                    <input type="file" class="form-control" (change)="onFileChange($event)" id="form_files_multiples" multiple accept=".jpg, .jpeg, .png" max="5">
+                    <button type="button" class="btn btn-primary" (click)="addImages()">Guardar</button>
+                  </div>
+                <div class="grid">
+                    <div *ngFor="let image of images" class="grid-item w-100">
+                        <img [src]="image.filePath" alt="Room Image" class="img-grid-detail">
+                        <div class="container-hover-delete" *ngIf="action === 'update'">
+                            <button type="button" class="btn btn-danger" (click)="deleteImage(image.id)">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     
-    <form [formGroup]="form_room">
-    <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" formControlName="name" name="name" required>
     </div>
-    <div class="mb-3">
+    <!-- <div class="mb-3">
         <label for="description" class="form-label">Description</label>
         <textarea class="form-control" id="description" rows="3" formControlName="description"name="description" required></textarea>
     </div>
@@ -23,6 +69,5 @@
         <label for="price" class="form-label">Price</label>
         <input type="number" class="form-control" id="price" formControlName="price" name="price" required>
     </div>
-    <button type="submit" class="btn btn-primary" (click)="submitForm()" [disabled]="form_room.invalid || files.length === 0">Submit</button>
-    </form>
+    <button type="submit" class="btn btn-primary" (click)="submitForm()" [disabled]="form_room.invalid || files.length === 0">Submit</button> -->
 </section>

@@ -38,6 +38,7 @@ const appRoutes: Routes = [
     { path: 'admin/images/:type', component: ImagesAdminComponent, canActivate:[AuthGuard] },
     { path: 'admin/rooms/list', component: RoomsAdminComponent, canActivate:[AuthGuard] },
     { path: 'admin/rooms/create', component: RoomsCreateAdminComponent, canActivate:[AuthGuard] },
+    { path: 'admin/rooms/detail/:id', component: RoomsCreateAdminComponent, canActivate:[AuthGuard] },
 ];
 
 //EXPORTACION DE MI APP.MODULE

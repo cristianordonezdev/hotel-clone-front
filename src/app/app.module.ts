@@ -28,6 +28,8 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 import { RoomsAdminComponent } from './components/admin-view/rooms-admin/rooms-admin.component';
 import { RoomsService } from './services/roomsService';
 import { RoomsCreateAdminComponent } from './components/admin-view/rooms-create-admin/rooms-create-admin.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { RoomsCreateAdminComponent } from './components/admin-view/rooms-create-
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     ModalModule.forRoot(),
+    ToastrModule.forRoot(),
   ],
   providers: [
     appRoutingProviders,

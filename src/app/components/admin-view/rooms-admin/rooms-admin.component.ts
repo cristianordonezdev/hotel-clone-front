@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomsService } from 'src/app/services/roomsService';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-rooms-admin',
   templateUrl: './rooms-admin.component.html',
@@ -15,7 +15,8 @@ export class RoomsAdminComponent implements OnInit {
 
   constructor(
     private _service: RoomsService,
-    private _modal_service: BsModalService
+    private _modal_service: BsModalService,
+    private _router: Router,
   ) { 
   }
 
@@ -25,7 +26,7 @@ export class RoomsAdminComponent implements OnInit {
       label:'Inicio'
     },
     {
-      url:'admin/rooms/list',
+      url:'/admin/rooms/list',
       label:'Habitaciones'
     },
   ];
@@ -67,5 +68,9 @@ export class RoomsAdminComponent implements OnInit {
   decline(): void {
     this.modalRef?.hide();
     this.room_selected = {};
+  }
+
+  goToDetail(id: string): void {
+    this._router.navigate(['/admin/rooms/detail/' + id]);
   }
 }
