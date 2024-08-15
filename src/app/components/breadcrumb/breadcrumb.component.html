@@ -1,5 +1,12 @@
-<nav aria-label="breadcrumb">
+<nav aria-label="breadcrumb" class="d-flex align-items-center justify-content-between">
     <ol class="breadcrumb">
         <li class="breadcrumb-item" *ngFor="let item of links"><a [routerLink]="item.url">{{item.label}}</a></li>
     </ol>
+    <button
+        class="btn btn-primary"
+        (click)="handleActionButton()"
+        *ngIf="buttonDetails"
+    >
+        {{ buttonDetails.label }}
+    </button>
 </nav>

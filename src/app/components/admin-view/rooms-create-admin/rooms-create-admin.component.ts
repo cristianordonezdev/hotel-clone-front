@@ -72,6 +72,10 @@ export class RoomsCreateAdminComponent implements OnInit {
       label:'Crear habitacion'
     },
   ];
+
+  public ButtonDetails: any = {
+    label: 'Editar habitación',
+  }
   
   public form_room = new FormGroup({
     name: new FormControl('', Validators.required),
