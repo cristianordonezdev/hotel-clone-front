@@ -1,7 +1,8 @@
 .main-container-admin-view {
     background-color: #282828;
     color: white;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     padding: 0 1em;
 
     .grid-images {

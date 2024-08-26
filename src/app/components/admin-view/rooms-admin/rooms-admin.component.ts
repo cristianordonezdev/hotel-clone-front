@@ -67,7 +67,8 @@ export class RoomsAdminComponent implements OnInit {
     })
 
   }
-  openModal(template: any, room: any) {
+  openModal(event: MouseEvent, template: any, room: any) {
+    event.stopPropagation();
     this.room_selected = room;
     this.modalRef = this._modal_service.show(template, { class: 'modal-dialog-centered' });
   }

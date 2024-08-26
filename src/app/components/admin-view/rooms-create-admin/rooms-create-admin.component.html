@@ -1,6 +1,10 @@
 <section class="main-container-admin-view">
     <div class="max-width-1400">
         <app-breadcrumb [links]="links"></app-breadcrumb>
+        <button 
+            *ngIf="action === 'detail'"
+            class="btn btn-primary" (click)="editRoom()">Actualizar
+        </button>
         <form [formGroup]="form_room">
         <div class="mb-3">
             <label for="name" class="form-label">Nombre</label>
@@ -44,7 +48,7 @@
                 <div class="grid">
                     <div *ngFor="let image of images" class="grid-item w-100">
                         <img [src]="image.filePath" alt="Room Image" class="img-grid-detail">
-                        <div class="container-hover-delete" *ngIf="action === 'update'">
+                        <div class="container-hover-delete" *ngIf="action === 'edit'">
                             <button type="button" class="btn btn-danger" (click)="deleteImage(image.id)">Eliminar</button>
                         </div>
                     </div>

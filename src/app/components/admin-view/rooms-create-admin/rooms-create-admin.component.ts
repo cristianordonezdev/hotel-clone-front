@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RoomsService } from 'src/app/services/roomsService';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ImagesService } from 'src/app/services/imagesService';
 import { ToastrService } from 'ngx-toastr';
 
@@ -17,7 +17,8 @@ export class RoomsCreateAdminComponent implements OnInit {
     private _service: RoomsService,
     private _toastr: ToastrService,
     private _route: ActivatedRoute,
-    private _service_images: ImagesService
+    private _service_images: ImagesService,
+    private _router: Router
   ) { }
   public files: File[] = [];
   public action: string = 'create';
@@ -27,6 +28,7 @@ export class RoomsCreateAdminComponent implements OnInit {
     const id = this._route.snapshot.params.id
     console.log(this._route.snapshot.routeConfig?.path?.includes('detail'))
     if (this._route.snapshot.routeConfig?.path?.includes('detail')) this.action = 'detail';
+    else if (this._route.snapshot.routeConfig?.path?.includes('edit')) this.action = 'edit';
 
     console.log('here fuck', this.action)
     if (id) {
@@ -144,15 +146,17 @@ export class RoomsCreateAdminComponent implements OnInit {
   }
 
   addImages(): void {
+    const id = this._route.snapshot.params.id
     const form_data: FormData = new FormData();
     form_data.append('imagetypeid', '3897b275-7a3f-4a84-a620-105b9b0eb89a');
-    // form_data.append('RelativeRelationId', ''
-    // for (let i = 0; i < this.files.length; i++) {
-    //   form_data.append('File', this.files[i]);
-    // }
-    // this._service_images.uploadImages(form_data).subscribe((response) => {
-    //   this.images.push(...response);
-    // })
+    form_data.append('RelativeRelationId', id)
+    for (let i = 0; i < this.files.length; i++) {
+      form_data.append('File', this.files[i]);
+    }
+    this._service_images.uploadImages(form_data).subscribe((response) => {
+      this.images.push(...response);
+      this._toastr.success('Las imagenes se han agrado correctamente.')
+    })
   }
 
 
@@ -184,7 +188,11 @@ export class RoomsCreateAdminComponent implements OnInit {
     }, error => {
       this._toastr.error('Hubo un error al obtener la habitación.')
     })
+  }
 
+  editRoom() {
+    const id = this._route.snapshot.params.id
+    this._router.navigate(['/admin/rooms/edit/' + id])
   }
 
   onFileChange(event: any) {
