@@ -26,19 +26,15 @@ export class RoomsCreateAdminComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this._route.snapshot.params.id
-    console.log(this._route.snapshot.routeConfig?.path?.includes('detail'))
     if (this._route.snapshot.routeConfig?.path?.includes('detail')) this.action = 'detail';
     else if (this._route.snapshot.routeConfig?.path?.includes('edit')) this.action = 'edit';
 
-    console.log('here fuck', this.action)
     if (id) {
       this.getRoom(id);
     }
     this._route.params.subscribe(params => {
       if (Object.keys(params).length > 0) {
-        console.log(params);
-        console.log('weh', this.action);
-  
+
         if (this.action === 'create') {
           this.links[2] = ({
             url: '/admin/rooms/create',
@@ -100,6 +96,9 @@ export class RoomsCreateAdminComponent implements OnInit {
 
     this._service.createRoom(form_data).subscribe((response: any) => {
       this.form_room.reset()
+      this.files = [];
+      const file_element = document.getElementById('file_input_add') as HTMLInputElement
+      if (file_element) file_element.value = ""
       this._toastr.success('La habitación se ha creado con exitosamente', 'Éxito')
     }, error => {
       const errors = error.error.errors;
@@ -177,10 +176,8 @@ export class RoomsCreateAdminComponent implements OnInit {
       // this.ButtonDetails.route = ['/admin/rooms/edit', id]
 
       const form_values: any = this.form_room.getRawValue();
-      console.log('whattt', this.action)
       if (this.action === 'detail') {
         Object.keys(form_values).forEach((key: any) => {
-          console.log('disabling')
           this.form_room.get(key)!.disable();
         });
       }
