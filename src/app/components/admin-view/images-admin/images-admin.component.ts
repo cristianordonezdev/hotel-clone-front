@@ -19,15 +19,12 @@ export class ImagesAdminComponent implements OnInit {
   open_add_images: boolean = false;
   private _files: File[] = [];
   modalRef?: BsModalRef;
+  public type: string = '';
 
   public links:any =[
     {
       url:'/admin/home',
       label:'Inicio'
-    },
-    {
-      url:'/admin/images/carousel',
-      label:'Images de carousel'
     },
   ];
 
@@ -40,8 +37,8 @@ export class ImagesAdminComponent implements OnInit {
   
 
   ngOnInit(): void {
-    // this.getImagesTypes();
     this.getImages();
+    this.getImagesTypes();
   }
   getImagesTypes(): void {
     this._service.getImagesTypes().subscribe((response) => {
@@ -51,8 +48,13 @@ export class ImagesAdminComponent implements OnInit {
     })
   }
   getImages(): void {
-    const type = typeof this._route.snapshot.params.type === 'string' ? this._route.snapshot.params.type : undefined;
-    this._service.getImages(type).subscribe((response) => {
+    this.type = typeof this._route.snapshot.params.type === 'string' ? this._route.snapshot.params.type : 'carousel';
+    this.links.push({
+      url: `/admin/images/${this.type}`,
+      label: `Images de ${this.type}`
+    })
+    
+    this._service.getImages(this.type).subscribe((response) => {
       this.images = response;
     }, error => {
       console.log(error)
@@ -60,7 +62,6 @@ export class ImagesAdminComponent implements OnInit {
   }
   deleteImage(id: string):void {
     this._service.deleteImage(id).subscribe((response) => {
-      console.log(response)
       this.images = this.images.filter((image) => image.id !== id)
       this.image_selected_id = '';
       this._toast.success('Exito', 'La imagen ha sido eliminada')
@@ -78,7 +79,8 @@ export class ImagesAdminComponent implements OnInit {
   }
   saveImages() {
     const form_data: FormData = new FormData();
-    form_data.append('imagetypeid', 'e4567686-1b4d-483d-a374-9e99306c8e7b');
+    const type_id: string = this.images_types.find(i => i.type === this.type).id;
+    form_data.append('imagetypeid', type_id);
 
     for (let i = 0; i < this._files.length; i++) {
       form_data.append('File', this._files[i]);

@@ -2,11 +2,13 @@
 
   <app-breadcrumb [links]="links"></app-breadcrumb>
 
-  <div class="w-1400">    
-    <label for="form_files_multiples" class="form-label">Agregar imagenes</label>
-    <div class="input-group mb-3">
-      <input type="file" class="form-control" (change)="onFileSelected($event)" id="form_files_multiples" multiple accept=".jpg, .jpeg, .png" max="5">
-      <button type="button" class="btn btn-primary" (click)="saveImages()">Guardar</button>
+  <div class="w-1400">
+    <div *ngIf="type !== 'room'">
+      <label for="form_files_multiples" class="form-label">Agregar imagenes</label>
+      <div class="input-group mb-3">
+        <input type="file" class="form-control" (change)="onFileSelected($event)" id="form_files_multiples" multiple accept=".jpg, .jpeg, .png" max="5">
+        <button type="button" class="btn btn-primary" (click)="saveImages()">Guardar</button>
+      </div>
     </div>
     <div class="grid-images">
       <div class="grid-item position-relative" *ngFor="let img of images">

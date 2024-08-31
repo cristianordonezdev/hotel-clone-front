@@ -10,7 +10,7 @@
         <a [routerLink]='[item.route]' [routerLinkActive]="['actived']">{{item.name}}</a>
         <ul class="submenu" *ngIf="item.name === 'SERVICIOS'">
           <li> <a [routerLink]='["servicios/alimentos-y-bebidas"]' [routerLinkActive]="['actived']" class="subItem">ALIMENTOS Y BEBIDAS</a></li>
-          <li> <a [routerLink]='["servicios/menu-sex"]' [routerLinkActive]="['actived']" class="subItem">MENU SEX</a></li>
+          <!-- <li> <a [routerLink]='["servicios/menu-sex"]' [routerLinkActive]="['actived']" class="subItem">MENU SEX</a></li> -->
         </ul>
       </li>
       

@@ -13,7 +13,6 @@ import { PromocionesComponent } from './components/promociones/promociones.compo
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { AvisoDePrivacidadComponent } from './components/aviso-de-privacidad/aviso-de-privacidad.component';
 import { AlimentosYBebidasComponent } from './components/alimentos-y-bebidas/alimentos-y-bebidas.component';
-import { MenuSexComponent } from './components/menu-sex/menu-sex.component';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';//PARA APLICAR MIS FORMULARIOS TWO DATA BINDING 
 import {HttpClientModule} from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -42,7 +41,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ContactoComponent,
     AvisoDePrivacidadComponent,
     AlimentosYBebidasComponent,
-    MenuSexComponent,
     NavbarComponent,
     FooterComponent,
     LoginComponent,
