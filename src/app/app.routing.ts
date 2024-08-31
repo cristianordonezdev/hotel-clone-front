@@ -13,7 +13,6 @@ import { PromocionesComponent } from './components/promociones/promociones.compo
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { AvisoDePrivacidadComponent } from './components/aviso-de-privacidad/aviso-de-privacidad.component';
 import { AlimentosYBebidasComponent } from './components/alimentos-y-bebidas/alimentos-y-bebidas.component';
-import { MenuSexComponent } from './components/menu-sex/menu-sex.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminViewComponent } from './components/admin-view/admin-view.component';
 import { ImagesAdminComponent } from './components/admin-view/images-admin/images-admin.component';
@@ -32,7 +31,6 @@ const appRoutes: Routes = [
     { path: 'contacto', component: ContactoComponent },
     { path: 'aviso-de-privacidad', component: AvisoDePrivacidadComponent },
     { path: 'servicios/alimentos-y-bebidas', component: AlimentosYBebidasComponent },
-    { path: 'servicios/menu-sex', component: MenuSexComponent },
     { path: 'admin', component: LoginComponent },
     { path: 'admin/home', component: AdminViewComponent, canActivate:[AuthGuard] },
     { path: 'admin/images/:type', component: ImagesAdminComponent, canActivate:[AuthGuard] },
