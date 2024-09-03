@@ -41,9 +41,6 @@ export class RoomsAdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRooms()
-    this.showSuccess()
-  }
-  showSuccess() {
   }
 
   getRooms():any {
