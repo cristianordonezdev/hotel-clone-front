@@ -16,6 +16,10 @@ export class AdminViewComponent implements OnInit {
       title: 'Habitaciones',
       actions: [{ name: 'Listar', route: 'admin/rooms/list' }, { name: 'Crear', route: 'admin/rooms/create' }],
     },
+    {
+      title: 'Ofertas',
+      actions: [{ name: 'Listar', route: 'admin/offers/list' }, { name: 'Crear', route: 'admin/offers/create' }],
+    },
   ];
 
 

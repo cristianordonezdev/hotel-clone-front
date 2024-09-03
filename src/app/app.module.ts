@@ -29,6 +29,8 @@ import { RoomsService } from './services/roomsService';
 import { RoomsCreateAdminComponent } from './components/admin-view/rooms-create-admin/rooms-create-admin.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OffersAdminComponent } from './components/admin-view/offers-admin/offers-admin.component';
+import { OffersService } from './services/offersService';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BreadcrumbComponent,
     RoomsAdminComponent,
     RoomsCreateAdminComponent,
+    OffersAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +69,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   providers: [
     appRoutingProviders,
     RoomsService,
+    OffersService
   ],
   bootstrap: [AppComponent]
 })
