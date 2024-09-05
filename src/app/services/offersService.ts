@@ -21,15 +21,15 @@ export class OffersService {
         return this._http.delete(`${this.utils.getCoreUrl()}/offer/${id}`, { headers: this.headers });
     }
 
-    // createRoom(form_data: FormData): Observable<any> {
-    //     return this._http.post(`${this.utils.getCoreUrl()}/room/`, form_data, { headers: this.headers });
-    // }
+    createOffer(form_data: FormData): Observable<any> {
+        return this._http.post(`${this.utils.getCoreUrl()}/offer/`, form_data, { headers: this.headers });
+    }
 
-    // getOneRoom(roomId: string): Observable<any> {
-    //     return this._http.get(`${this.utils.getCoreUrl()}/room/${roomId}`, { headers: this.headers });
-    // }
+    getOneOffer(offerId: string): Observable<any> {
+        return this._http.get(`${this.utils.getCoreUrl()}/offer/${offerId}`, { headers: this.headers });
+    }
 
-    // updateRoom(roomId: number, form_data: FormData) {
-    //     return this._http.put(`${this.utils.getCoreUrl()}/room/${roomId}`, form_data, { headers: this.headers });
-    // }
+    updateOffer(offerId: number, form_data: FormData) {
+        return this._http.put(`${this.utils.getCoreUrl()}/offer/${offerId}`, form_data, { headers: this.headers });
+    }
 }

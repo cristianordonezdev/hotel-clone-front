@@ -20,6 +20,7 @@ import { AuthGuard } from 'src/shared/guards/auth.guards';
 import { RoomsAdminComponent } from './components/admin-view/rooms-admin/rooms-admin.component';
 import { RoomsCreateAdminComponent } from './components/admin-view/rooms-create-admin/rooms-create-admin.component';
 import { OffersAdminComponent } from './components/admin-view/offers-admin/offers-admin.component';
+import { OffersCreateAdminComponent } from './components/admin-view/offers-create-admin/offers-create-admin.component';
 
 
 //DEFINICION DE RUTAS
@@ -40,6 +41,8 @@ const appRoutes: Routes = [
     { path: 'admin/rooms/detail/:id', component: RoomsCreateAdminComponent, canActivate:[AuthGuard] },
     { path: 'admin/rooms/edit/:id', component: RoomsCreateAdminComponent, canActivate:[AuthGuard] },
     { path: 'admin/offers/list', component: OffersAdminComponent, canActivate:[AuthGuard] },
+    { path: 'admin/offers/create', component: OffersCreateAdminComponent, canActivate:[AuthGuard] },
+    { path: 'admin/offers/detail/:id', component: OffersCreateAdminComponent, canActivate:[AuthGuard] },
 
 ];
 
