@@ -31,6 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OffersAdminComponent } from './components/admin-view/offers-admin/offers-admin.component';
 import { OffersService } from './services/offersService';
+import { OffersCreateAdminComponent } from './components/admin-view/offers-create-admin/offers-create-admin.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { OffersService } from './services/offersService';
     RoomsAdminComponent,
     RoomsCreateAdminComponent,
     OffersAdminComponent,
+    OffersCreateAdminComponent,
   ],
   imports: [
     BrowserModule,
