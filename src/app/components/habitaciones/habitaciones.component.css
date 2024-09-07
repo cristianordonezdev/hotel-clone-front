@@ -1,7 +1,7 @@
 
 .parallax{
-    background-image: url(../../../assets/images/parallax-habitacion.jpg);
-    background-size: 2200px;
+    background-image: url(../../../assets/images/rooms-parallax.webp);
+    background-position: top left;
     height: 475px;
 }
 

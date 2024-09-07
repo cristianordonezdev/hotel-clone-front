@@ -29,7 +29,7 @@ export class InicioComponent implements OnInit {
     this._service.getImages('carousel').subscribe((response) => {
       this.images_carousel = response.map((item: any) => item.filePath)
     }, (error) => {
-      console.log(error)
+      this.images_carousel = ['https://picsum.photos/2000/770']
     })
   }
 

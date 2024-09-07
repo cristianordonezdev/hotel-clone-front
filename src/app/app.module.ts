@@ -34,7 +34,7 @@ import { OffersService } from './services/offersService';
 import { OffersCreateAdminComponent } from './components/admin-view/offers-create-admin/offers-create-admin.component';
 import { ContactAdminComponent } from './components/admin-view/contact-admin/contact-admin.component';
 import { ContactDetailAdminComponent } from './components/admin-view/contact-detail-admin/contact-detail-admin.component';
-
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,6 +71,7 @@ import { ContactDetailAdminComponent } from './components/admin-view/contact-det
     BrowserAnimationsModule,
     ModalModule.forRoot(),
     ToastrModule.forRoot(),
+    CarouselModule.forRoot(),
   ],
   providers: [
     appRoutingProviders,

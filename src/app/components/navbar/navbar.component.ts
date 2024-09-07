@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('userData')
+    this._router.navigate(['/admin']);
   }
 
   toggleSidebar(): void {
