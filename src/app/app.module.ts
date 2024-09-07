@@ -32,6 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OffersAdminComponent } from './components/admin-view/offers-admin/offers-admin.component';
 import { OffersService } from './services/offersService';
 import { OffersCreateAdminComponent } from './components/admin-view/offers-create-admin/offers-create-admin.component';
+import { ContactAdminComponent } from './components/admin-view/contact-admin/contact-admin.component';
+import { ContactDetailAdminComponent } from './components/admin-view/contact-detail-admin/contact-detail-admin.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { OffersCreateAdminComponent } from './components/admin-view/offers-creat
     RoomsCreateAdminComponent,
     OffersAdminComponent,
     OffersCreateAdminComponent,
+    ContactAdminComponent,
+    ContactDetailAdminComponent,
   ],
   imports: [
     BrowserModule,

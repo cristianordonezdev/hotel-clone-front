@@ -1,0 +1,15 @@
+<section class="main-container-admin-view">
+    <app-breadcrumb [links]="links"></app-breadcrumb>
+    <div class="card mb-3 ">
+        <div class="card-header">
+            <strong>{{ contact.name }}</strong> <span class="text-muted"> ({{ contact.email }})</span>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ contact.subject }}</h5>
+            <p class="card-text">{{ contact.message }}</p>
+        </div>
+        <div class="card-footer text-muted">
+            Enviado a: {{ formatDate(contact.createdAt) }}
+        </div>
+    </div>
+</section>
