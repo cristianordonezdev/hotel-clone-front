@@ -23,6 +23,7 @@ import { OffersAdminComponent } from './components/admin-view/offers-admin/offer
 import { OffersCreateAdminComponent } from './components/admin-view/offers-create-admin/offers-create-admin.component';
 import { ContactAdminComponent } from './components/admin-view/contact-admin/contact-admin.component';
 import { ContactDetailAdminComponent } from './components/admin-view/contact-detail-admin/contact-detail-admin.component';
+import { LoginGuard } from 'src/shared/guards/login.guards';
 
 
 //DEFINICION DE RUTAS
@@ -35,7 +36,7 @@ const appRoutes: Routes = [
     { path: 'contacto', component: ContactoComponent },
     { path: 'aviso-de-privacidad', component: AvisoDePrivacidadComponent },
     { path: 'servicios/alimentos-y-bebidas', component: AlimentosYBebidasComponent },
-    { path: 'admin', component: LoginComponent },
+    { path: 'admin', component: LoginComponent, canActivate:[LoginGuard] },
     { path: 'admin/home', component: AdminViewComponent, canActivate:[AuthGuard] },
     { path: 'admin/images/:type', component: ImagesAdminComponent, canActivate:[AuthGuard] },
     { path: 'admin/rooms/list', component: RoomsAdminComponent, canActivate:[AuthGuard] },

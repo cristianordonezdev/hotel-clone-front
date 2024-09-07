@@ -1,29 +1,9 @@
-<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
-    </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="texto animate__animated animate__fadeIn">
-                <h2>Bienvenidos al Hotel ABCentral</h2>
-            </div>  
-            <div class="texto2 animate__animated animate__fadeIn animate__delay-1s">
-                <h1>VILLAS Y SUITES</h1>
-            </div> 
-
-            <img src="../../../assets/images/Slider_1.jpg" class="image-home-carousel" alt="...">
-        </div>
-        <div class="carousel-item" *ngFor="let image of images_carousel">
-            <img src="{{image}}" class="image-home-carousel" alt="...">
-        </div>
-    </div>
+<div class="carousel slide carousel-fade h-770" data-ride="carousel">
+    <carousel class="w-100 h-100 mt-5">
+        <slide *ngFor="let img of images_carousel">
+            <img [src]="img" alt="first slide" class="img-slider-carousel">
+        </slide>
+    </carousel>
 </div>
 
 <div class="mineContainer">
