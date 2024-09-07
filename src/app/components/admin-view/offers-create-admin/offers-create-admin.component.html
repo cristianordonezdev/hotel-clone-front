@@ -3,11 +3,11 @@
         <app-breadcrumb [links]="links"></app-breadcrumb>
         <button 
             *ngIf="action === 'detail'"
-            class="btn btn-primary" (click)="editRoom()">Actualizar
+            class="btn btn-primary" (click)="editOffer()">Actualizar
         </button>
         <button 
-        *ngIf="action === 'detail'"
-            class="btn btn-danger ms-3" (click)="deleteRoom()">Eliminar
+            *ngIf="action === 'detail'"
+            class="btn btn-danger ms-3" (click)="deleteOffer()">Eliminar
         </button>
         <form [formGroup]="form_offer">
         <div class="mb-3 mt-3">
@@ -25,35 +25,42 @@
             <label for="file" class="form-label">Imagenes</label>
             <input type="file" class="form-control" id="file_input_add" (change)="onFileChange($event)" name="file" accept=".jpg,.png,.jpeg">
         </div>
+        <div class="card col-6" *ngIf="image">
+            <img [src]="image.filePath" alt="Room Image" *ngIf="action !== 'create'">
 
-        <img [src]="images" alt="Room Image" class="col-6">
-    
-        <button 
-            type="submit" 
-            *ngIf="action === 'create'"
-            class="btn btn-primary" (click)="submitForm()" [disabled]="form_offer.invalid || files.length === 0">Crear
-        </button>
-        <button 
-            type="submit" 
-            *ngIf="action === 'edit'"
-            class="btn btn-primary" (click)="updateRoom()" [disabled]="form_offer.invalid">Actualizar
-        </button>
-            <!-- <div *ngIf="action !== 'create'" class="mt-4">
+            <div class="container-trash-icon" (click)="deleteImage(image.id)">
+                <i class="bi bi-trash"></i>
+            </div>
+        </div>
+        
+        <div class="w-100 mt-3">
+            <button 
+                type="submit" 
+                *ngIf="action === 'create'"
+                class="btn btn-primary" (click)="submitForm()" [disabled]="form_offer.invalid || files.length === 0">Crear
+            </button>
+            <button 
+                type="submit" 
+                *ngIf="action === 'edit'"
+                class="btn btn-primary" (click)="updateOffer()" [disabled]="form_offer.invalid">Actualizar
+            </button>
+        </div>
+            <div *ngIf="action === 'edit'" class="mt-4">
 
                 <h4>Imagenes</h4>
-                <div class="input-group mb-3" *ngIf="action === 'edit'">
+                <div class="input-group mb-3">
                     <input type="file" class="form-control" (change)="onFileChange($event)" id="form_files_multiples" multiple accept=".jpg, .jpeg, .png" max="5">
                     <button type="button" class="btn btn-primary" (click)="addImages()">Guardar</button>
                   </div>
-                <div class="grid">
+                <!-- <div class="grid">
                     <div *ngFor="let image of images" class="grid-item w-100">
                         <img [src]="image.filePath" alt="Room Image" class="img-grid-detail">
                         <div class="container-hover-delete" *ngIf="action === 'edit'">
                             <button type="button" class="btn btn-danger" (click)="deleteImage(image.id)">Eliminar</button>
                         </div>
                     </div>
-                </div>
-            </div> -->
+                </div> -->
+            </div> 
         </form>
     
     </div>

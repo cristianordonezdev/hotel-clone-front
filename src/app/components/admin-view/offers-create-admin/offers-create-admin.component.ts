@@ -23,7 +23,7 @@ export class OffersCreateAdminComponent implements OnInit {
   ) { }
   public files: File[] = [];
   public action: string = 'create';
-  public images: {filePath: string, id: string}[] = []
+  public image: any = {}
 
   ngOnInit(): void {
     const id = this._route.snapshot.params.id
@@ -110,53 +110,54 @@ export class OffersCreateAdminComponent implements OnInit {
     })
   }
 
-  updateRoom(): void {
-    // const id = this._route.snapshot.params.id
-    // const form_data: FormData = new FormData();
-    // const form_values: any = this.form_offer.getRawValue();
-
-    // Object.keys(form_values).forEach((key: any) => {
-    //   form_data.append(key, form_values[key] ?? '');
-    // });
-
-    // this._service.updateRoom(id, form_data).subscribe((response: any) => {
-    //   this.links[2].label =  `Editar habitación ${response.name}`
-      
-    //   this._toastr.success('La habitación se ha actualizado exitosamente', 'Éxito')
-    // }, error => {
-    //   const errors = error.error.errors;
-    //   let msj = ''
-
-    //   for(const type in errors) {
-    //     msj += `${errors[type].join(', ')}\n`
-    //   }
-    //   this._toastr.error('Hubo un error al actualizar la habitación. \n' + msj, 'Error')
-    // })
-  }
-
   deleteImage(id: string) {
     this._service_images.deleteImage(id).subscribe(response => {
-      this.images = this.images.filter(image => image.id!== id);
+      this.image = {}
       this._toastr.success('La imagen se ha eliminado exitosamente.')
     }, error => {
       this._toastr.error('Hubo un error al eliminar la imagen.')
     });
   }
 
+  updateOffer(): void {
+    const id = this._route.snapshot.params.id
+    const form_data: FormData = new FormData();
+    const form_values: any = this.form_offer.getRawValue();
+
+    Object.keys(form_values).forEach((key: any) => {
+      form_data.append(key, form_values[key] ?? '');
+    });
+
+    this._service.updateOffer(id, form_data).subscribe((response: any) => {
+      this.links[2].label =  `Editar Oferta ${response.name}`
+      
+      this._toastr.success('La oferta se ha actualizado exitosamente', 'Éxito')
+    }, error => {
+      const errors = error.error.errors;
+      let msj = ''
+
+      for(const type in errors) {
+        msj += `${errors[type].join(', ')}\n`
+      }
+      this._toastr.error('Hubo un error al actualizar la oferta. \n' + msj, 'Error')
+    })
+  }
+
   addImages(): void {
     const id = this._route.snapshot.params.id
     const form_data: FormData = new FormData();
-    form_data.append('imagetypeid', '3897b275-7a3f-4a84-a620-105b9b0eb89a');
+    form_data.append('imagetypeid', '8929b4bf-5be3-4002-8ad6-b9f46f782f16');
     form_data.append('RelativeRelationId', id)
     for (let i = 0; i < this.files.length; i++) {
       form_data.append('File', this.files[i]);
     }
     this._service_images.uploadImages(form_data).subscribe((response) => {
-      this.images.push(...response);
+      this.image = response;
       this._toastr.success('Las imagenes se han agrado correctamente.')
     })
   }
-  deleteRoom(): void {
+
+  deleteOffer(): void {
     const id = this._route.snapshot.params.id
 
     this._service.deleteOffer(id).subscribe(response => {
@@ -175,7 +176,7 @@ export class OffersCreateAdminComponent implements OnInit {
         name: response.name,
         description: response.description,
       })
-      this.images = response.imagePath;
+      this.image = response.image;
 
       this.links[2] = {
         url:`/admin/offers/detail/${id}`,
@@ -195,9 +196,9 @@ export class OffersCreateAdminComponent implements OnInit {
     })
   }
 
-  editRoom() {
+  editOffer() {
     const id = this._route.snapshot.params.id
-    this._router.navigate(['/admin/rooms/edit/' + id])
+    this._router.navigate(['/admin/offers/edit/' + id])
   }
 
   onFileChange(event: any) {

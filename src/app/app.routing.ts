@@ -43,6 +43,7 @@ const appRoutes: Routes = [
     { path: 'admin/offers/list', component: OffersAdminComponent, canActivate:[AuthGuard] },
     { path: 'admin/offers/create', component: OffersCreateAdminComponent, canActivate:[AuthGuard] },
     { path: 'admin/offers/detail/:id', component: OffersCreateAdminComponent, canActivate:[AuthGuard] },
+    { path: 'admin/offers/edit/:id', component: OffersCreateAdminComponent, canActivate:[AuthGuard] },
 
 ];
 

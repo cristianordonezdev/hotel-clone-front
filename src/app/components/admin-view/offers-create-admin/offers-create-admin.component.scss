@@ -39,3 +39,21 @@
 
     }
 }
+
+.card {
+    cursor: pointer;
+    &:hover {
+        .container-trash-icon {
+            display: block;
+        }
+    }
+    .container-trash-icon {
+        position: absolute;
+        top: 0.5em;
+        right: 0.5em;
+        background-color: white;
+        font-size: 30px;
+        cursor: pointer;
+        display: none;
+    }
+}
