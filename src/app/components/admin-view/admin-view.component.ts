@@ -20,6 +20,10 @@ export class AdminViewComponent implements OnInit {
       title: 'Ofertas',
       actions: [{ name: 'Listar', route: 'admin/offers/list' }, { name: 'Crear', route: 'admin/offers/create' }],
     },
+    {
+      title: 'Contactos',
+      actions: [{ name: 'Listar', route: 'admin/contacts/list' }],
+    },
   ];
 
 

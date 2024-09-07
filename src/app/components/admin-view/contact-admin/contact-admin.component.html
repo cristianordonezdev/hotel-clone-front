@@ -1,0 +1,38 @@
+<section class="main-container-admin-view">
+  <app-breadcrumb [links]="links"></app-breadcrumb>
+
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Mensaje</th>
+            <th scope="col">Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of contacts; let i = index" class="cursor-pointer" (click)="goToDetail(item.id)">
+            <td>{{i + 1}}</td>
+            <td>{{item.name.slice(0, 100)}}  {{item.name.length > 100 ? '...' : ''}}</td>
+            <td>{{item.email.slice(0, 100)}}  {{item.email.length > 100 ? '...' : ''}}</td>
+            <td>{{item.subject.slice(0, 100)}}  {{item.subject.length > 100 ? '...' : ''}}</td>
+            <td>{{item.message.slice(0, 100)}} {{item.message.length > 100 ? '...' : ''}}</td>
+            <td>{{formatDate(item.createdAt)}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <nav class="d-flex justify-content-center">
+        <ul class="pagination">
+            <li class="page-item cursor-pointer" [ngClass]="{'disabled': current_page === 1}" (click)="current_page !== 1 && previous()">
+              <a class="page-link"><i class="bi bi-arrow-left"></i></a>
+            </li>
+            <li class="page-item cursor-pointer" [ngClass]="{'disabled': contacts.length < per_page}" (click)="contacts.length < per_page ? '' : next()">
+              <a class="page-link"><i class="bi bi-arrow-right"></i></a>
+            </li>
+          </ul>
+      </nav>
+</section>
+
