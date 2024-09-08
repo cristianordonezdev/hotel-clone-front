@@ -1,5 +1,5 @@
 .parallax{
-    background-image: url(../../../assets/images/alimentos-y-bebidas/SliderFotos_restaurante.jpg);
+    background-image: url(../../../assets/images/rooms-parallax.webp);
     background-size: 2200px;
     height: 475px;
 }
@@ -30,9 +30,16 @@ img{
 .mineContainerAlimentos{
     width: 70%;
     margin: 0px auto;
+    background-color: #ccc;
+    min-height: 700px;
+    margin-bottom: 1em;
 }
 
 .mineContainerAlimentos img{
     width: 75%;
+}
+.object-fit-cover {
+    object-fit: cover;
+    height: 100%;
 }
 

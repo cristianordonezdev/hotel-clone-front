@@ -20,4 +20,8 @@ export class ContactService {
     getContact(id: string): Observable<any> {
         return this._http.get(`${this.utils.getCoreUrl()}/contact/${id}`, { headers: this.headers });
     }
+
+    postContact(data: any): Observable<any> {
+        return this._http.post(`${this.utils.getCoreUrl()}/contact/`, data, { headers: this.headers });
+    }
 }

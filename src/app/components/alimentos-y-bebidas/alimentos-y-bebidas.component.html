@@ -5,6 +5,7 @@
 <h1 class="mt-5">MENÚ DE ALIMENTOS</h1>
 <img src="../../../assets/images/aster.png" class="wow animate__animated animate__fadeInLeft mb-3">
 <div class="mineContainerAlimentos">
-    <img src="../../../assets/images/alimentos-y-bebidas/1.jpg" class="wow animate__animated animate__fadeInLeft mb-3">
-
+    <div *ngFor="let img of images">
+        <img [src]="img.filePath" alt="" class="w-100 object-fit-cover">
+    </div>
 </div>
