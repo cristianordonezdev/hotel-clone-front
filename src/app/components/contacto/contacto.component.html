@@ -23,7 +23,7 @@
 
     </div>
     <h2>Si tienes duda o comentario contactanos!</h2>
-    <form [formGroup]="form_contact" class="mt-4 mb-5">
+    <form [formGroup]="form_contact" (ngSubmit)="submitForm()" class="mt-4 mb-5">
 
         <div class="alert" role="alert">
             <strong>El formulario fue enviado con éxito</strong> 
