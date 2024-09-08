@@ -23,7 +23,7 @@ jobs:
 
       - name: Replace environment variables
         run: |
-          echo "export const environment = { production: true, url_core: '${{ secrets.API_URL }}' };" > ./src/environments/environment.ts
+          echo "export const environment = { production: true, url_core: '${{ secrets.API_URL }}', secret_key_crypto: '${{ secrets.SECRET_KEY_CRYPTO }}' };" > ./src/environments/environment.ts
 
       - name: Build the application
         run: npm run build
