@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { NgwWowService } from "ngx-wow";
+import { ImagesService } from 'src/app/services/imagesService';
  
 declare var $:any;
 @Component({
   selector: 'app-galeria',
   templateUrl: './galeria.component.html',
-  styleUrls: ['./galeria.component.scss']
+  styleUrls: ['./galeria.component.scss'],
+  providers: [ImagesService]
 })
 export class GaleriaComponent implements OnInit {
-  constructor(private wowService: NgwWowService) { 
+  public images: any = [];
+
+  constructor(private wowService: NgwWowService, private _service: ImagesService) { 
   }
 
   ngOnInit(): void {
@@ -20,8 +24,20 @@ export class GaleriaComponent implements OnInit {
       $(".parallax").css("background-position-y", offset * 0.7 + 'px');
      
     });
+    this.getImages();
 
+  }
 
+  getImages() {
+    this._service.getImages('room').subscribe(
+      response => {
+        this.images = response;
+        console.log(response);
+      },
+      err => {
+        this.images = ["https://picsum.photos/200/300", "https://picsum.photos/200/400", "https://picsum.photos/200/300", "https://picsum.photos/200/400"]
+      }
+    );
   }
 
 }

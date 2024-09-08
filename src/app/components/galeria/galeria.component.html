@@ -18,7 +18,7 @@
             <div class="col-12">
                 <div> 
                     <video controls preload="metadata" class="video w-100">
-                        <source src="http://www.example.com/waterfall-video.mp4" type="video/webm"/>
+                        <source src="../../../assets/videos/video-gallery.mp4" type="video/webm"/>
                         Video not supported.
                     </video>
                 </div>
@@ -43,18 +43,5 @@
 </div>
 
 <div class="galeria">
-
-        <a href="../../../assets/images/galeria/1.jpg" data-lightbox="hotel" ><img  src="../../../assets/images/galeria/1.jpg" alt=""></a>
-        <a href="../../../assets/images/galeria/2.jpg" data-lightbox="hotel" > <img src="../../../assets/images/galeria/2.jpg" alt=""></a>
-        <a href="../../../assets/images/galeria/3.jpg" data-lightbox="hotel" > <img src="../../../assets/images/galeria/3.jpg" alt=""></a>
-        <a href="../../../assets/images/galeria/4.jpg" data-lightbox="hotel" > <img src="../../../assets/images/galeria/4.jpg" alt=""></a>
-        <a href="../../../assets/images/galeria/5.jpg" data-lightbox="hotel" ><img  src="../../../assets/images/galeria/5.jpg" alt=""></a>
-        <a href="../../../assets/images/galeria/6.jpg" data-lightbox="hotel" > <img src="../../../assets/images/galeria/6.jpg" alt=""></a>
-        <a href="../../../assets/images/galeria/7.jpg" data-lightbox="hotel" > <img src="../../../assets/images/galeria/7.jpg" alt=""></a>
-        <a href="../../../assets/images/galeria/8.jpg" data-lightbox="hotel" > <img src="../../../assets/images/galeria/8.jpg" alt=""></a>
-        <a href="../../../assets/images/galeria/9.jpg" data-lightbox="hotel" ><img  src="../../../assets/images/galeria/1.jpg" alt=""></a>
-        <a href="../../../assets/images/galeria/10.jpg" data-lightbox="hotel" > <img src="../../../assets/images/galeria/2.jpg" alt=""></a>
-       
-   
-
+    <a *ngFor="let item of images" data-lightbox="hotel"  [attr.href]="item.filePath"><img [src]="item.filePath" alt=""></a>
 </div>

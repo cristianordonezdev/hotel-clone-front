@@ -27,3 +27,7 @@
     font-size: 20px;
     color:rgb(141, 140, 140);
 }
+.img-250 {
+    height: 250px;
+    object-fit: cover;
+}
