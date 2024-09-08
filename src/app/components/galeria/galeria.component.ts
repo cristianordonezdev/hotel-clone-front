@@ -35,7 +35,13 @@ export class GaleriaComponent implements OnInit {
         console.log(response);
       },
       err => {
-        this.images = ["https://picsum.photos/200/300", "https://picsum.photos/200/400", "https://picsum.photos/200/300", "https://picsum.photos/200/400"]
+        this.images = [
+          { filePath: "https://picsum.photos/200/300" },
+          { filePath: "https://picsum.photos/200/400" },
+          { filePath: "https://picsum.photos/200/300" },
+          { filePath: "https://picsum.photos/200/400" }
+        ];
+        
       }
     );
   }
